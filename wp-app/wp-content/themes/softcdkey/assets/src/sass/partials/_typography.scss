@@ -1,0 +1,34 @@
+small,
+.small {
+	@include font-size(15px, 20px, 0.28px);
+}
+
+// alignments
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-left {
+	text-align: left;
+}
+
+// Modifiers
+.text-bold {
+	font-weight: 700;
+}
+
+.text-semibold {
+	font-weight: 600;
+}
+
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+.no-line-height {
+	line-height: 1em !important;
+}

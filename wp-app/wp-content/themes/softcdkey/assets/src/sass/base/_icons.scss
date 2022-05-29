@@ -1,0 +1,41 @@
+.icon {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: var(--fa-display, inline-block);
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    min-width: 25px;
+    min-height: 25px;
+    background-size: contain !important;
+    background-position: center !important;
+
+    &-star {
+        background: url('/wp-content/themes/softcdkey/assets/img/svg/star.svg') no-repeat;
+
+        &-empty {
+            background: url('/wp-content/themes/softcdkey/assets/img/svg/star-empty.svg') no-repeat;
+        }
+    }
+
+    &-clock {
+        background: url('/wp-content/themes/softcdkey/assets/img/svg/clock.svg') no-repeat;
+    }
+
+    &-warranty {
+        background: url('/wp-content/themes/softcdkey/assets/img/svg/warranty.svg') no-repeat;
+    }
+
+    &-surprise {
+        background: url('/wp-content/themes/softcdkey/assets/img/svg/surprise.svg') no-repeat;
+    }
+
+    &-download {
+        background: url('/wp-content/themes/softcdkey/assets/img/svg/download.svg') no-repeat;
+    }
+
+    &-document {
+        background: url('/wp-content/themes/softcdkey/assets/img/svg/document.svg') no-repeat;
+    }
+}

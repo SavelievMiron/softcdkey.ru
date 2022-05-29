@@ -1,0 +1,111 @@
+.page-cart {
+    .page-content {
+        margin-bottom: 80px;
+
+        @include tablet {
+            width: 100%;
+        }
+    }
+
+    .woocommerce-cart {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 20px;
+        min-height: 450px;
+
+        @include laptop {
+            flex-direction: column;
+        }
+
+        .shop-table {
+            border: none;
+        }
+
+        .woocommerce-cart-form {
+            width: 65%;
+
+            @include laptop {
+                width: 100%;
+            }
+
+            &__cart-item {
+                border: 1px solid #EEEEEE;
+                box-sizing: border-box;
+                box-shadow: -7px -20px 22px rgba(35, 51, 107, 0.05);
+                border-radius: 8px;
+                height: 100px;
+                padding: 15px 20px;
+
+                @include tablet {
+                    height: auto;
+                }
+
+                .product {
+                    &-thumbnail {
+                        a {
+                            display: block;
+                            max-width: 100px;
+                            height: 100%;
+
+                            img {
+                                object-fit: contain;
+                                height: 100%;
+                                width: 100%;
+                            }
+                        }
+                    }
+                    &-name {
+                        font-size: 18px;
+                        font-weight: 700;
+                        line-height: 14px;
+                        text-align: left;
+                    }
+
+                    &-subtotal {
+                        font-size: 14px;
+                        font-weight: 700;
+                        line-height: 18px;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+
+        .cart-collaterals {
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 -15px 22px rgba(35, 51, 107, 0.1);
+            overflow: hidden;
+            width: calc(35% - 50px);
+            padding: 20px;
+
+            @include laptop {
+                width: 100%;
+            }
+
+            & > div {
+                width: 100%;
+            }
+
+            .cart_totals {
+                tr {
+                    td {
+                        text-align: right;
+                    }
+                }
+            }
+        }
+
+        .coupon {
+            .input-text {
+                padding: 15px 10px;
+                border-radius: 8px;
+                border: 1px solid #bebebe70;
+                height: 100%;
+                margin-right: 10px !important;
+                min-width: 180px;
+            }
+        }
+    }
+}

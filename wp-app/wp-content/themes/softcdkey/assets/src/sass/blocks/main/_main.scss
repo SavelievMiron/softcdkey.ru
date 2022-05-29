@@ -1,0 +1,9 @@
+.page-main {
+    @import "slider/slider";
+    @import "categories/categories";
+    @import "top-banner/top-banner";
+    @import "products/products";
+    @import "testimonials/testimonials";
+}
+
+@import "search/search";

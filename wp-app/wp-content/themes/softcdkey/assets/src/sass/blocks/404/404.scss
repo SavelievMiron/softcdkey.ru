@@ -1,0 +1,19 @@
+.page-404 {
+	.row {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		min-height: 50vh;
+	}
+	h1 {
+		font-size: 56px;
+	}
+	p {
+		font-size: 18px;
+	}
+	a#home {
+		padding: 10px 20px;
+		border: 2px solid black;
+		border-radius: 8px;
+	}
+}

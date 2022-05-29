@@ -1,0 +1,21 @@
+section#faq {
+    padding: 60px 0;
+}
+
+.faq {
+    &__heading {
+        font-size: 28px;
+        font-weight: 800;
+        color: grey;
+        margin-bottom: 30px;
+    }
+
+    &__questions {
+        margin-bottom: 50px;
+    }
+
+    &__link {
+        color: grey;
+        text-decoration: underline !important;
+    }
+}

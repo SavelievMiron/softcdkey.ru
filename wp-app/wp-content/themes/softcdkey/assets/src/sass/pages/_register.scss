@@ -1,0 +1,40 @@
+.page-registration {
+
+	.page-content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		margin: 40px auto 20px auto;
+		min-height: 70vh;
+
+		h1 {
+			font-size: 28px;
+			margin-bottom: 20px;
+		}
+	}
+
+	.user-registration {
+		width: 50%;
+		margin: 0 auto !important;
+
+		&-error {
+			display: flex;
+			align-items: center;
+
+			strong {
+				margin-right: 10px;
+			}
+		}
+
+		button[type="submit"] {
+			color: white;
+			background: linear-gradient(90deg, #59cc87 0%, #779e87 105.09%);
+			-webkit-backdrop-filter: blur(10px);
+			backdrop-filter: blur(10px);
+			min-width: 200px;
+			margin: 0 auto;
+		}
+	}
+
+}

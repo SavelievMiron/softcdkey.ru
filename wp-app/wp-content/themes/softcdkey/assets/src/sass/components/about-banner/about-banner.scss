@@ -1,0 +1,126 @@
+.about-banner {
+    position: relative;
+    .swiper-slide {
+        width: 100% !important;
+
+        img {
+            height: 240px;
+            object-fit: cover;
+            @include netbook {
+                height: 140px;
+            }
+        }
+    }
+
+    .swiper-navigation {
+        position: absolute;
+        bottom: 30px;
+        right: 0;
+        z-index: 99;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 50px;
+
+        @include netbook {
+            bottom: -20px;
+            justify-content: center;
+        }
+    }
+
+    .swiper-nav-btn {
+        position: static;
+        transform: none;
+        margin: 0 10px;
+        border-radius: 5px;
+        height: 40px;
+        width: 40px;
+        color: grey;
+        background: #e5e6e8;
+        opacity: 1;
+
+        @include netbook {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    .swiper-nav-btn::after {
+        font-size: 16px;
+        @include netbook {
+            font-size: 14px;
+        }
+    }
+}
+
+.about-banner {
+    &__item {
+        background: #464a58;
+        padding: 15px 0 15px 15px;
+        @include netbook {
+            height: 140px;
+            padding: 0;
+        }
+        @include mobile{
+            padding: 30px;
+        }
+
+        &-title {
+            color: white;
+            font-size: 36px;
+            font-weight: 900;
+
+            @include netbook {
+                display: none;
+            }
+        }
+        &-subtitle {
+            color: white;
+            font-size: 14px;
+            font-weight: 300;
+            @include netbook {
+                display: none;
+            }
+        }
+        &-text {
+            background: linear-gradient(95.13deg, #ff8c5a 4.77%, rgba(255, 67, 67, 0.4) 102.57%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-size: 80px;
+            font-weight: 900;
+            line-height: 1;
+            margin-top: 20px;
+
+            @include laptop {
+                font-size: 60px;
+            }
+
+            @include netbook {
+                font-size: 40px;
+                text-align: center;
+                margin: 0;
+                position: relative;
+                z-index: 5;
+            }
+        }
+        &-img {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            @include mobile {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0;
+                opacity: 0.2;
+                display: block;
+            }
+        }
+    }
+}
+
+.position-relative {
+    position: relative;
+}

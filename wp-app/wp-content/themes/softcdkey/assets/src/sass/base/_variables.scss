@@ -1,0 +1,75 @@
+:root {
+    --primary-bg-color: #464A58;
+    --secondary-bg-color:#3E414A;
+    --primary-text-color: #ffffff;
+    --secondary-text-color: #464A58;
+    --shadow-bg-color: rgba(0, 0, 0, 0.25);
+
+    --product-badge-type: linear-gradient(95.13deg, #A8A8A8 4.77%, rgba(190, 190, 190, 0.4) 102.57%);
+    --product-badge-popular: linear-gradient(95.13deg, #5A88FF 4.77%, rgba(217, 67, 255, 0.4) 102.57%);
+    --product-badge-new: linear-gradient(90deg, #59CC87 0%, #779E87 105.09%);
+    --product-badge-hot: linear-gradient(95.77deg, #ff0000 30px, #ED4747 18.03%, rgba(128, 27, 27, 0.35) 100.87%);
+    --product-badge-sale: linear-gradient(to right, rgba(255, 0, 0, 1), rgba(255, 0, 0, 0.5));
+
+    --discount-bg-color: linear-gradient(to right, rgba(255, 0, 0, 1), rgba(255, 0, 0, 0.5));
+
+    --quick-puchase-bg-color: linear-gradient(90deg, #59CC87 0%, #779E87 105.09%);
+
+    --original-price-text-color: #464A58;
+    --old-price-text-color: #C4C4C4;
+}
+
+/*-------------------------
+*  Grid
+*--------------------------*/
+$columns: 12;
+$gutter: 10px;
+$spacing: 20;
+
+/*-------------------------
+*  Spacing
+*--------------------------*/
+$paddings: ('pt': 'padding-top', 'pr': 'padding-right', 'pb': 'padding-bottom', 'pl': 'padding-left');
+$margins: ('mt': 'margin-top', 'mr': 'margin-right', 'mb': 'margin-bottom', 'ml': 'margin-left');
+
+/*-------------------------
+*  Media Queries
+*--------------------------*/
+$xs: 480px;
+$sm: 600px;
+$md: 800px;
+$lg: 1190px;
+$xl: 1440px;
+$xxl: 1700px;
+
+$breakpoints: ('xs': $xs, 'sm': $sm, 'md': $md, 'lg': $lg, 'xl': $xl);
+
+/*-------------------------
+*  Colours
+*--------------------------*/
+$white: #fff;
+$black: #000;
+$light-grey: #f0f0f0;
+
+// custom colours
+
+$colours: ('white': $white, 'black': $black, 'light-grey': $light-grey);
+
+/*-------------------------
+*  Typography
+*--------------------------*/
+$base-font: 'Mont', Arial, sans-serif;
+
+$base-fs: 16px;
+
+/*-------------------------
+*  Animations
+*--------------------------*/
+$time: 320ms;
+$time_slow: 700ms;
+
+$swing: cubic-bezier(0.55, 0, 0.1, 1);
+$swift: cubic-bezier(0.4, 0, 0.2, 1);
+$ease: ease;
+
+$transition-default: all $time $ease;

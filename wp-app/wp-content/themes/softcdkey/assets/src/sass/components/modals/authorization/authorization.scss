@@ -1,0 +1,15 @@
+.modal--authorization {
+    // display: none;
+
+    .modal__container {
+        min-width: 400px;
+
+        .input-field {
+            width: 100%;
+        }
+
+        .form-field-group {
+            padding: 20px 0;
+        }
+    }
+}

@@ -1,0 +1,388 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Mont", Arial, sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--primary-bg-color)
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.h-2 {
+    color: #494949;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: black;
+
+    &:not(.underline) {
+        text-decoration: none;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+button {
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+}
+
+.btn {
+    font-weight: 700;
+    padding: 12.5px 40px;
+    border-radius: 8px;
+    text-decoration: none !important;
+    cursor: pointer;
+
+    &-large {
+        font-size: 24px;
+        padding: 12.5px 65px;
+        font-weight: 700;
+    }
+
+    &-medium {
+        font-size: 18px;
+        padding: 12.5px 35px;
+        font-weight: 700;
+    }
+}
+
+@media (max-width: 992px) {
+    .btn {
+        &-large {
+            font-size: 20px;
+            padding: 12.5px 45px;
+        }
+    }
+}
+
+.btn-primary {
+    color: white;
+    background: var(--primary-bg-color);
+}
+
+.btn-purple {
+    color: white;
+    backdrop-filter: blur(10px);
+    background: linear-gradient(95.13deg, #5a88ff 4.77%, rgba(217, 67, 255, 0.4) 102.57%);
+}
+
+.btn-green {
+    color: white;
+    background: linear-gradient(90deg, #59cc87 0%, #779e87 105.09%);
+    backdrop-filter: blur(10px);
+}
+
+.btn-shadow {
+    box-shadow: 9px 16px 18px rgba(128, 143, 189, 0.38);
+    backdrop-filter: blur(13px);
+    transition: 300ms ease;
+
+    &:hover {
+        box-shadow: none;
+    }
+
+    @include mobile {
+        width: 100%;
+        text-align: center;
+        border-radius: 3px;
+        font-weight: 800;
+    }
+}
+
+.btn-outline {
+    border: 1px solid var(--primary-bg-color);
+    color: var(--primary-bg-color);
+    background-color: white;
+}
+
+.mt-auto {
+    margin-top: auto;
+}
+
+.mb-auto {
+    margin-bottom: auto;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.custom-checkbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background-color: transparent;
+    padding: 3px;
+}
+
+.custom-checkbox:hover input ~ .checkmark:after {
+    background-color: #cfcfcf;
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 14px;
+    color: grey;
+    content: "\f00c";
+    // background-color: #CFCFCF;
+}
+
+.custom-checkbox .checkmark:after {
+    content: "";
+    width: calc(100% - 5px);
+    height: calc(100% - 5px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+    display: none;
+}
+
+.page-heading {
+    font-size: 42px;
+    /* white-space: nowrap; */
+
+    z-index: -1;
+    color: white;
+    text-shadow: 1px 0 0 #bebebe, 0 -1px 0 #bebebe, 0 1px 0 #bebebe, -1px 0 0 #bebebe;
+    text-align: center;
+    width: 100%;
+    padding: 40px 0;
+
+    @include tablet {
+        font-size: 36px;
+    }
+
+    @include mobile {
+        font-size: 28px;
+        padding: 40px 0 20px 0;
+    }
+}
+
+.page-content {
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 -15px 22px rgba(35, 51, 107, 0.1);
+    width: 85%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+
+    &:after {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+    }
+
+    p {
+        line-height: 28px;
+        font-weight: 300;
+    }
+}
+
+.square-list {
+    li {
+        font-weight: 300;
+        list-style-type: none;
+        padding-left: 20px;
+        position: relative; /* It's needed for setting position to absolute in the next rule. */
+    }
+
+    li::before {
+        content: "■";
+        position: absolute;
+        top: 0;
+        left: 0; /* Adjust this value so that it appears where you want. */
+        font-size: 1.1em; /* Adjust this value so that it appears what size you want. */
+    }
+}
+
+hr.section-break {
+    margin: 40px 0;
+    border: none;
+    color: #eee;
+    background-color: #eee;
+    height: 1px;
+}
+
+input,
+textarea {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #bebebe70;
+}
+
+
+.form-field {
+    color: var(--primary-bg-color);
+
+    input,
+    textarea {
+        & > .w-100 {
+            width: 100%;
+        }
+
+        &.error:valid {
+            box-shadow: 0 0 5px 1px green;
+        }
+
+        &.error:invalid {
+            box-shadow: 0 0 5px 1px red;
+        }
+    }
+
+    input {
+        height: 50px;
+    }
+
+    &-group {
+        display: flex;
+        justify-content: space-between;
+        color: var(--primary-bg-color);
+    }
+
+    &__password {
+        position: relative;
+
+        .show-pass {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            padding: 10px;
+            background: transparent;
+            font-size: 20px;
+            color: grey;
+            transition: all 0.4s ease;
+
+            &:hover {
+                color: black;
+            }
+
+            &:after {
+                content: "\f06e";
+                font-weight: 900;
+                font-family: "Font Awesome 6 Free";
+            }
+
+            &.is-active:after {
+                content: "\f070";
+            }
+        }
+    }
+
+    &--invalid {
+        box-shadow: 0 0 5px 1px red;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 14px;
+        font-weight: 300;
+        margin-top: 7px;
+    }
+}
+
+.form-message {
+    display: none;
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+    padding: 7.5px 10px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    &--success {
+        color: green;
+        border-color: green;
+    }
+
+    &--error {
+        color: red;
+        border-color: red;
+    }
+
+    &.is-active {
+        display: block;
+    }
+}
+
+.swiper-pagination-bullet {
+    width: 7px;
+    height: 7px;
+    margin: 2px !important;
+    background-color: #c4c4c4 !important;
+    opacity: 1 !important;
+
+    &-active {
+        border-radius: 4px !important;
+        width: 12px !important;
+        background-color: #464a58 !important;
+    }
+}

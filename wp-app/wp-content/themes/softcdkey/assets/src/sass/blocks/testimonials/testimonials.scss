@@ -1,0 +1,220 @@
+.page-testimonials {
+    hr.section-break {
+        margin: 40px -40px;
+    }
+
+    .page-content {
+        padding: 40px;
+
+        @include netbook {
+            width: 100%;
+            padding: 40px 15px;
+        }
+    }
+
+    .testimonials {
+        &__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            @include laptop {
+                flex-direction: column;
+            }
+
+            &-left {
+                width: 20%;
+                min-width: 200px;
+                text-align: left;
+
+                @include laptop {
+                    width: 100%;
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+
+                h3 {
+                    font-size: 28px;
+                    font-weight: 800;
+                    color: var(--primary-bg-color);
+                }
+            }
+
+            &-right {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 80%;
+                @include laptop {
+                    width: 100%;
+                }
+
+                @include netbook {
+                    width: 100%;
+                    flex-wrap: wrap;
+                    justify-content: space-evenly;
+                }
+
+                h3 {
+                    color: grey;
+                    font-size: 22px;
+                    font-weight: 800;
+                    margin-left: auto;
+                    margin-right: 30px;
+
+                    @include laptop {
+                        margin-left: 0;
+                    }
+
+                    @include netbook {
+                        text-align: center;
+                        width: 100%;
+                        margin: 0 0 20px;
+                    }
+                }
+
+                a {
+                    font-size: 16px;
+                    font-weight: 700;
+                    padding: 10px 20px;
+                    border-radius: 8px;
+                    color: white;
+
+                    @include laptop {
+                        margin-bottom: 0;
+                    }
+
+                    @include netbook {
+                        margin-bottom: 15px;
+                    }
+
+                    &:nth-child(2) {
+                        background: linear-gradient(91.55deg, #fccc50 1.36%, rgba(224, 142, 65, 0.42) 99.79%);
+                    }
+
+                    &:nth-child(3) {
+                        background: linear-gradient(94.19deg, #85e176 3.04%, rgba(91, 202, 135, 0.71) 97.74%);
+                    }
+
+                    &:nth-child(4) {
+                        background: linear-gradient(93.38deg, #d36767 2.86%, rgba(255, 163, 163, 0.49) 99.32%);
+                    }
+
+                    &:not(:last-child) {
+                        margin-right: 15px;
+                    }
+                }
+            }
+        }
+
+        &__not-found {
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            padding: 15px 0;
+        }
+    }
+
+    .testimonial {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 100px;
+        position: relative;
+
+        @include netbook {
+            flex-direction: column;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+
+        &__number {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: 70px;
+            min-width: 120px;
+            height: 100%;
+
+            color: rgba(128, 128, 128, 0.5);
+            font-weight: 900;
+            white-space: nowrap;
+
+            position: relative;
+
+            @include netbook {
+                position: absolute;
+                left: 0;
+                top: 15px;
+                max-height: 65px;
+            }
+
+            span:first-child {
+                font-size: 20px;
+                margin-bottom: 45px;
+            }
+
+            &-shadow {
+                font-size: 42px;
+                color: #fff;
+                text-shadow: 1px 0 0 rgba(128, 128, 128, 0.5), 0 -1px 0 rgba(128, 128, 128, 0.5),
+                    0 1px 0 rgba(128, 128, 128, 0.5), -1px 0 0 rgba(128, 128, 128, 0.5);
+                position: absolute;
+                left: 0;
+                bottom: 0;
+            }
+        }
+
+        &__user {
+            margin: 0 20px;
+            height: 75px;
+            width: 75px;
+            min-width: 75px;
+
+            &-photo {
+                border-radius: 50%;
+                overflow: hidden;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                position: relative;
+            }
+            &-like {
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                overflow: hidden;
+                position: relative;
+                top: -25px;
+                left: -5px;
+            }
+
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        &__info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 400;
+            margin-bottom: 15px;
+
+            @include netbook {
+                margin-top: 15px;
+            }
+        }
+
+        &__message {
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+    }
+}

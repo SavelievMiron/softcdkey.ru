@@ -1,0 +1,380 @@
+.product-card {
+    background: radial-gradient(108.11% 121.67% at 0% -11.15%, rgba(70, 74, 88, 0.17) 0%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 8px;
+    border: 1px solid rgba(70, 74, 88, 0.22);
+    box-sizing: border-box;
+    filter: drop-shadow(1px 13px 18px rgba(53, 92, 150, 0.06));
+    transition: 0.3s all ease;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+
+    @include mobile {
+        overflow: hidden;
+    }
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 0 30px -15px rgba(0, 0, 0, 0.8);
+
+        @include mobile {
+            transform: none;
+        }
+    }
+
+    &__top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+
+    &__content {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        img {
+            height: 160px;
+            width: 75%;
+            left: 50%;
+            transform: translateX(-50%);
+            object-fit: contain;
+            position: relative;
+            top: 0;
+            margin-bottom: 20px;
+
+            @include mobile {
+                width: 90%;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    &__title {
+        text-align: center;
+
+        width: 100%;
+		padding: 0 15px;
+        margin-bottom: 15px;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        a {
+            color: #464a58;
+        }
+    }
+
+    &__subtitle {
+        display: block;
+        font-weight: 300;
+    }
+
+    &__badge {
+        font-size: 18px;
+        font-weight: 800;
+        padding: 8px 10px 5px;
+        border-radius: 10px;
+        color: white;
+        position: absolute;
+        top: 5px;
+        left: -20px;
+        backdrop-filter: blur(10px);
+
+        @include mobile {
+            top: 5px;
+            left: 0;
+            font-size: 14px;
+            border-radius: 2px;
+        }
+
+        &_popular {
+            background: var(--product-badge-popular);
+        }
+
+        &_new {
+            background: var(--product-badge-new);
+
+            &:after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background-color: #a5ffa4;
+                border-radius: 5px;
+            }
+        }
+
+        &_hot {
+            padding-left: 30px;
+            background: url("/wp-content/themes/softcdkey/assets/img/svg/hot-discount.svg") no-repeat left 5px center/20px, var(--product-badge-hot);
+        }
+
+        &_sale {
+            background: var(--product-badge-sale);
+        }
+
+        & + .product-card__discount {
+            top: 47px;
+        }
+    }
+
+    &__discount {
+        font-size: 22px;
+        font-weight: 900;
+        color: white;
+        background: var(--discount-bg-color);
+        padding: 8px 10px 5px;
+        border-radius: 10px;
+        position: absolute;
+        backdrop-filter: blur(10px);
+        top: 5px;
+        left: -20px;
+
+        @include mobile {
+            top: 40px;
+            left: 0;
+            font-size: 14px;
+            padding: 5px 5px 3px;
+            border-radius: 2px;
+        }
+    }
+
+    .favourites {
+        font-size: 28px;
+        color: grey;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        height: 35px;
+        width: 35px;
+        border: 0;
+        background: transparent;
+        transition: 0.2s all ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &::before {
+            font-family: "Font Awesome 6 Free";
+            content: "\f004";
+        }
+
+        &:hover {
+            color: black;
+        }
+
+        &__add {
+            font-weight: 400;
+        }
+
+        &__remove {
+            font-weight: 900;
+        }
+    }
+
+    &__bottom {
+        position: relative;
+        display: flex;
+        background: url("/wp-content/themes/softcdkey/assets/img/triangle.png") no-repeat right center / 120px 100%;
+        margin: 0;
+        border-top: 1px solid rgba(70, 74, 88, 0.22);
+        padding: 10px 5px 10px 10px;
+        overflow: hidden;
+
+        @include mobile {
+            padding: 0 5px 0 0;
+            background: none;
+            height: 55px;
+        }
+    }
+
+    &__cart {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 55%;
+
+        @include mobile {
+            width: 30%;
+        }
+
+        .add-to-cart {
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            width: 100%;
+            display: inline-block;
+            border: 0;
+            border-radius: 10px;
+            background: url("/wp-content/themes/softcdkey/assets/img/svg/add-to-cart.svg") no-repeat left 10px center / 17px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 2px black;
+            position: relative;
+            padding: 10px 20px 8px;
+
+            @include mobile {
+                border-radius: 0;
+
+                box-shadow: none;
+                margin: 0;
+                padding: 20px;
+                height: 100%;
+                background: url("/wp-content/themes/softcdkey/assets/img/svg/add-to-cart.svg") no-repeat left 45% center / 17px;
+                background-color: #464a5812;
+            }
+
+            & > span {
+                color: black;
+                position: relative;
+                z-index: 99;
+
+                @include mobile {
+                    display: none;
+                }
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                z-index: 9;
+                background: url("/wp-content/themes/softcdkey/assets/img/svg/add-to-cart-white.svg") no-repeat left 10px center / 20px,
+                var(--primary-bg-color);
+                transition: all 0.4s ease-in-out;
+
+                @include mobile {
+                    background: url("/wp-content/themes/softcdkey/assets/img/svg/add-to-cart-white.svg") no-repeat left 45% center / 20px,
+                    var(--primary-bg-color);
+                }
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+            &:hover {
+                border-color: transparent;
+                background-image: none;
+
+                & > span {
+                    color: white;
+                }
+            }
+
+            &:hover:after {
+                opacity: 1;
+            }
+        }
+
+        .quick-purchase {
+            font-weight: 300;
+            font-size: 12px;
+			text-decoration: underline;
+
+            @include mobile {
+                display: none;
+            }
+        }
+
+        &-laptop {
+            @include mobile {
+                display: none !important;
+            }
+        }
+
+        &-mobile {
+            display: none !important;
+            @include mobile {
+                display: flex !important;
+            }
+        }
+
+        &_tap {
+            width: 71%;
+            position: absolute;
+            right: 0;
+            background: #dedfe2;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 14px;
+
+            a {
+                padding: 5px 8px;
+            }
+
+            &-1 {
+                font-weight: 800;
+                border-bottom: 1px solid #adadad;
+            }
+        }
+    }
+
+    &__price {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 45%;
+        padding: 0 5px;
+
+        @include mobile {
+            padding: 5px;
+            width: 70%;
+        }
+    }
+
+    &__sale-price {
+        width: 100%;
+        text-align: right;
+        font-size: 34px;
+        font-weight: 700;
+        line-height: 28px;
+        color: #464a58;
+        white-space: nowrap;
+        @include laptop {
+            font-size: 30px;
+        }
+        @include mobile {
+            font-size: 24px;
+        }
+    }
+
+    &__original-price {
+        font-size: 36px;
+        font-weight: 700;
+        color: #464a58;
+        white-space: nowrap;
+        width: 100%;
+        text-align: right;
+
+        @include laptop {
+            font-size: 30px;
+        }
+    }
+
+    &__sale-price + &__original-price {
+        display: inline;
+        color: grey;
+        font-size: 18px !important;
+        font-weight: 700;
+        margin-left: auto;
+    }
+}

@@ -1,0 +1,83 @@
+a.added_to_cart {
+    display: none !important;
+}
+
+.woocommerce-input-wrapper {
+    input,
+    textarea {
+
+        &:focus {
+            box-shadow: 0 0 5px var(--shadow-bg-color) !important;
+        }
+    }
+}
+
+.woocommerce-error,
+.woocommerce-info,
+.woocommerce-message {
+    margin: 0 0 10px !important;
+}
+
+.product-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px;
+    grid-column: 1 / -1;
+}
+
+.no-found-product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1 / -1;
+    padding: 20px 15px;
+
+    p {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.woocommerce-checkout {
+	#payment {
+		background-color: #ebe9eb70;
+	}
+	.wc_payment_methods {
+		.wc_payment_method {
+			border: 1px solid #80808069;
+			border-radius: 8px;
+			padding: 10px;
+			margin-bottom: 7px !important;
+			background-color: white;
+			transition: box-shadow .4s ease-in-out;
+
+			input {
+				display: none;
+			}
+
+			label {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				cursor: pointer;
+			}
+
+			img {
+				width: 35px;
+				margin: -2px 15px 0 0 !important;
+			}
+
+			&__title {
+				text-align: left;
+				font-size: 14px;
+				line-height: 16px;
+				flex-basis: calc(100% - 50px);
+			}
+
+			&.is-active {
+				box-shadow: 0 2px 7px #800080d1;
+			}
+		}
+	}
+}

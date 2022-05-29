@@ -1,0 +1,64 @@
+.page-testimonials {
+    margin-top: 80px;
+
+    .page-content {
+        padding: 40px 80px;
+
+        @include tablet {
+            padding: 20px;
+        }
+
+        @include mobile {
+            padding: 40px 20px;
+        }
+    }
+
+    @include mobile {
+        margin-top: 60px;
+        margin-bottom: 30px;
+    }
+
+    .testimonials__header {
+        margin-bottom: 70px;
+
+        @include netbook {
+            margin-bottom: 40px;
+        }
+    }
+
+    .testimonials {
+        border-radius: 130px 130px 0 0;
+        margin-bottom: 0;
+
+        @include netbook {
+            border-radius: 50px 50px 0 0;
+        }
+
+        @include mobile {
+            border-radius: 10px 10px 0 0;
+            display: none;
+        }
+    }
+
+    .testimonials__header-left {
+        width: 100%;
+        text-align: center;
+
+        h3 {
+            font-size: 42px;
+            padding: 20px 20px 10px;
+
+            @include netbook {
+                font-size: 32px;
+                padding-top: 30px;
+            }
+
+            @include mobile {
+                font-size: 24px;
+                padding-top: 30px;
+            }
+        }
+    }
+}
+
+

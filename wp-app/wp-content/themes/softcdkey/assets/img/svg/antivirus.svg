@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="6.92309mm"
+   height="8.4666595mm"
+   viewBox="0 0 6.92309 8.4666595"
+   version="1.1"
+   id="svg222"
+   inkscape:version="1.1.1 (eb90963e84, 2021-10-02)"
+   sodipodi:docname="antiviruses.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview224"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.74386223"
+     inkscape:cx="-381.11896"
+     inkscape:cy="49.740393"
+     inkscape:window-width="1920"
+     inkscape:window-height="1013"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs219" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-77.279772,-135.5523)">
+    <path
+       d="m 80.741319,135.5523 c -1.300957,1.3671 -3.461547,1.05833 -3.461547,1.05833 0,0 0,1.52135 0,3.70417 0,2.18281 3.461547,3.70416 3.461547,3.70416 0,0 3.461543,-1.52135 3.461543,-3.70416 0,-2.18282 0,-3.70417 0,-3.70417 0,0 -2.160587,0.30877 -3.461543,-1.05833 z"
+       fill="#464a58"
+       id="path226"
+       style="stroke-width:0.264583" />
+    <path
+       d="m 80.491261,141.43377 -1.535105,-1.19909 0.32543,-0.41698 1.089819,0.85063 1.768475,-2.6043 0.437621,0.29713 z"
+       fill="#ffffff"
+       id="path228"
+       style="stroke-width:0.264583" />
+  </g>
+</svg>

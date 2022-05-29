@@ -1,0 +1,9 @@
+.single-product {
+    .mobile-product {
+        display: none;
+    }
+    @import "faq/faq";
+    @import "info/info";
+    @import "description/description";
+    @import "similar/similar";
+}

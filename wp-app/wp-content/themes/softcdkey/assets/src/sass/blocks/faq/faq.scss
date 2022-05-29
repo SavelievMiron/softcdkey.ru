@@ -1,0 +1,150 @@
+.page-faq {
+    .page-content {
+        @include laptop {
+            width: 100%;
+        }
+
+        padding: 15px;
+    }
+
+    .h-2 {
+        text-align: center;
+        margin: 35px 0 50px 0;
+        font-size: 36px;
+
+        @include netbook {
+            font-size: 30px;
+        }
+
+        @include mobile {
+            font-size: 24px;
+
+            margin: 30px 0;
+        }
+    }
+
+    hr.section-break {
+        margin: 60px -15px;
+
+        @include mobile{
+            margin: 30px -15px;
+        }
+    }
+
+    .hot-topics {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+
+        @include netbook {
+            flex-wrap: wrap;
+        }
+
+        
+    }
+
+    .hot-topic {
+        border-radius: 8px;
+        margin: 0 5px;
+        overflow: hidden;
+        border: 1px solid #eeeeee;
+        box-shadow: -7px -20px 22px rgba(35, 51, 107, 0.05);
+        transition: border-color 0.4s ease;
+
+        width: 24%;
+
+        @include netbook {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+
+        @include tablet {
+            width: 100%;
+        }
+
+        @include mobile{
+            &:nth-child(3), &:nth-child(4){
+                display: none;
+            }
+        }
+
+        &:hover,
+        &.is-active {
+            border-color: #464a58;
+        }
+
+        &__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 25px;
+            background-color: var(--primary-bg-color);
+
+            h4 {
+                color: white;
+                font-size: 14px;
+                font-weight: 900;
+            }
+
+            span {
+                color: #8c8c8c;
+                font-size: 12px;
+            }
+        }
+
+        &__content {
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 18px;
+            margin: 25px;
+
+            height: 127px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+
+    .faq {
+        &__questions {
+            padding: 0 20px;
+            margin-bottom: 30px;
+
+            @include mobile {
+                padding: 0;
+            }
+
+            &--header {
+                text-align: left;
+                font-size: 28px;
+                font-weight: 900;
+                color: #c5c5c5;
+                margin-bottom: 25px;
+
+                @include netbook {
+                    text-align: center;
+                    color: #464a58;
+                }
+            }
+        }
+    }
+
+    .no-answers {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 40px 0;
+
+        button {
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        span {
+            font-weight: 300;
+            max-width: 400px;
+            text-align: center;
+        }
+    }
+}

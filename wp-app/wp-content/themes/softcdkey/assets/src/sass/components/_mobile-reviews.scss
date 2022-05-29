@@ -1,0 +1,109 @@
+.similar-reviews {
+    width: 100%;
+    margin-bottom: 60px;
+    display: none;
+
+    .page-content{
+        margin-bottom: 0;
+    }
+
+    @include mobile {
+        display: block;
+        margin-bottom: 0;
+    }
+
+    &__title {
+        color: #464a58;
+        font-size: 36px;
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 10px;
+        line-height: 1;
+
+        @include mobile {
+            font-size: 28px;
+        }
+    }
+    
+    &__subtitle {
+        width: 100%;
+        display: block;
+        font-size: 14px;
+        font-weight: 300;
+        color: #5b5b5b;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .similar-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding-bottom: 60px;
+
+        &__user {
+            width: 67px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            &-photo {
+                width: 67px;
+                height: 67px;
+                border-radius: 50%;
+            }
+
+            &-like {
+                width: 22px;
+                height: 22px;
+                position: absolute;
+                bottom: 0;
+                left: -5px;
+            }
+        }
+
+        &__name {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            h4 {
+                font-weight: 900;
+                font-size: 20px;
+            }
+        }
+
+        &__number {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 900;
+            color: black;
+            -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: rgba(0, 0, 0, 0.3);
+            /* -webkit-text-stroke-color: rgba(0, 0, 0, 0.08); */
+        }
+
+        &__text {
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 15px;
+            height: 110px;
+            overflow: hidden;
+        }
+
+        h4 {
+            color: #c4c4c4;
+        }
+    }
+
+    &-btn {
+        display: block;
+        text-align: center;
+        width: 100%;
+        padding: 12px;
+        background-color: #464a58;
+        color: white;
+        border-radius: 3px;
+        font-weight: 700;
+    }
+}

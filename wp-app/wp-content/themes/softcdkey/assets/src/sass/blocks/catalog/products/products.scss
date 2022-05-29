@@ -1,0 +1,116 @@
+.products {
+    width: 75%;
+
+    @include netbook {
+        width: 70%;
+    }
+
+    @include tablet {
+        width: 100%;
+    }
+
+    &-grid {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(3, 30%);
+        gap: 1% 5%;
+        .product-card {
+            margin-bottom: 30px;
+        }
+        @include netbook {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include tablet {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include mobile {
+            grid-template-columns: 1fr 1fr;
+            gap: 0 2.5%;
+        }
+    }
+
+    .search-form {
+        margin-bottom: 0;
+
+        .search__field{
+            width: 100%;
+
+            @include mobile{
+                width: 100%;
+            }
+        }
+    }
+
+    .btn-filters {
+        margin-bottom: 30px;
+        width: 100%;
+        display: none;
+
+        @include tablet {
+            margin-top: 20px;
+            display: block;
+        }
+    }
+
+    .popular-products {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__heading {
+            font-size: 20px;
+            font-weight: 800;
+            margin-right: auto;
+            text-align: left;
+            color: white;
+            border-radius: 10px;
+            background: linear-gradient(95.13deg, #5a88ff 4.77%, rgba(217, 67, 255, 0.4) 102.57%);
+            padding: 10px 20px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        &__content {
+            width: 100%;
+        }
+    }
+}
+
+/* .products {
+    .popular-products {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__heading {
+            font-size: 20px;
+            font-weight: 800;
+            margin-right: auto;
+            text-align: left;
+            color: white;
+            border-radius: 10px;
+            background: linear-gradient(95.13deg, #5A88FF 4.77%, rgba(217, 67, 255, 0.4) 102.57%);
+            padding: 10px 20px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        &__content {
+            width: 100%;
+        }
+    }
+}
+
+
+
+.products-grid {
+    grid-template-columns: repeat(3, 30%);
+    gap: 95px 5%;
+    padding-bottom: 0;
+}
+
+.products {
+    width: 80%;
+} */

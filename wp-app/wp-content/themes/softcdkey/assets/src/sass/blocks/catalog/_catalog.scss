@@ -1,0 +1,11 @@
+.page-catalog {
+    padding: 30px 0;
+
+    @include mobile{
+        padding: 30px 0 0;
+    }
+
+    @import "sidebar/sidebar";
+    @import "products/products";
+    @import "filters/filters";
+}

@@ -1,0 +1,125 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 50px 0 30px 0;
+    position: relative;
+    @include mobile{
+        margin-bottom: 80px;
+    }
+
+    .page-item {
+        &:first-child,
+        &:last-child {
+            .page-link {
+                padding: 13px;
+            }
+        }
+
+        &.active {
+            .page-link {
+                color: white !important;
+                background-color: #464a58;
+            }
+        }
+    }
+
+    .page-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+        padding: 13px 20px;
+        border: 1px solid var(--shadow-bg-color);
+        box-shadow: -2px -7px 15px rgba(255, 255, 255, 0.25), 12px 14px 18px rgba(0, 0, 0, 0.06),
+            inset 0px 2px 8px rgba(70, 74, 88, 0.31);
+        margin: 0 10px;
+        border-radius: 10px;
+        color: grey;
+        text-decoration: none !important;
+        transition: 200ms ease;
+
+        @include mobile {
+            padding: 10px 15px;
+            box-shadow: none;
+        }
+
+        &:first-child,
+        &:last-child {
+            display: none;
+        }
+
+        &:hover {
+            color: white !important;
+            background-color: #464a58;
+        }
+
+        &-current {
+            color: white !important;
+            background-color: var(--primary-bg-color);
+        }
+
+        &:nth-child(2) {
+            margin-right: 30px;
+
+            @include mobile {
+                margin-right: 15px;
+            }
+        }
+
+        &:nth-last-child(2) {
+            margin-left: 30px;
+            @include mobile {
+                margin-left: 15px;
+            }
+        }
+
+        &:hover {
+            color: black;
+        }
+
+        /* &-first, &-last{
+            display: none;
+        } */
+
+        &-prev,
+        &-next {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+
+            @include mobile {
+                position: absolute;
+                bottom: -50px;
+            }
+        }
+
+        &-prev {
+            @include mobile {
+                left: calc(50% - 65px);
+            }
+        }
+        &-next {
+            @include mobile {
+                right: calc(50% - 65px);
+            }
+        }
+
+        &-prev:before {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            content: "\f104";
+        }
+
+        &-next:before {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            content: "\f105";
+        }
+    }
+
+    &__icon {
+    }
+}

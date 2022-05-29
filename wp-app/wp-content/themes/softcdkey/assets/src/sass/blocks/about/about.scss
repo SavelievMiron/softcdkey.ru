@@ -1,0 +1,78 @@
+.page-about-us {
+    .about-us {
+        .page-content {
+            width: 80%;
+            padding: 70px 70px 20px 70px;
+            margin: 40px auto 0;
+            border-bottom: 1px solid #eee;
+
+            h2 {
+                margin-bottom: 20px;
+            }
+
+            p:not(:last-child) {
+                margin-bottom: 20px;
+            }
+
+            @include tablet {
+                width: 100%;
+                padding: 40px 20px;
+
+                h2 {
+                    text-align: center;
+                }
+            }
+        }
+
+        ul.square-list {
+            margin-left: 25px;
+            li {
+                line-height: 1.4;
+            }
+
+            li:not(:last-child) {
+                margin-bottom: 15px;
+            }
+        }
+
+        &__partners {
+            width: 100%;
+            margin: 40px auto;
+
+            h2 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+
+                li {
+                    display: inline-flex;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    margin: 10px 15px;
+                    @include mobile {
+                        width: 27%;
+                        margin: 10px;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+    /* .about-banner {
+        display: none;
+        width: 85%;
+        margin-bottom: 40px;
+    } */
+}

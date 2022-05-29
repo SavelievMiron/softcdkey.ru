@@ -1,0 +1,35 @@
+.modal--search {
+
+    .modal__container {
+        min-width: 650px;
+
+        .search-field {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            position: relative;
+
+            .form-field {
+                display: inline-block;
+                width: 100%;
+                margin-bottom: 0;
+
+                input[type=search] {
+                    width: 100%;
+                    padding: 5px 105px 5px 5px;
+                }
+            }
+
+            input[type=submit] {
+                height: 50px;
+                width: 100px;
+                padding: 0;
+
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+    }
+}

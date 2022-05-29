@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="6.8791595mm"
+   height="8.467227mm"
+   viewBox="0 0 6.8791595 8.467227"
+   version="1.1"
+   id="svg46"
+   inkscape:version="1.1.1 (eb90963e84, 2021-10-02)"
+   sodipodi:docname="office-icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview48"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.74386223"
+     inkscape:cx="-393.21797"
+     inkscape:cy="14.787684"
+     inkscape:window-width="1920"
+     inkscape:window-height="1013"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs43" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-80.502932,-144.80013)">
+    <path
+       d="m 87.257241,145.5126 -2.40747,-0.70556 c -0.03749,-0.011 -0.0775,-0.009 -0.113506,0.007 l -4.127105,1.76394 c -0.06392,0.0274 -0.105548,0.0916 -0.10558,0.16264 v 4.58622 c 0,0.0967 0.07595,0.17542 0.170243,0.1764 -0.09497,6.1e-4 -0.171484,0.0801 -0.170888,0.17748 4.51e-4,0.0758 0.04808,0.14283 0.118267,0.16648 l 4.127102,1.41116 c 0.01757,0.006 0.0359,0.009 0.05434,0.009 0.01595,-1.1e-4 0.0318,-0.002 0.04712,-0.007 l 2.40747,-0.70557 c 0.07379,-0.0216 0.124725,-0.0906 0.124857,-0.16936 v -6.70294 c -1.32e-4,-0.0787 -0.05106,-0.14777 -0.124857,-0.16934 z m -6.504664,5.97164 1.031777,-0.52917 c 0.05818,-0.0299 0.09493,-0.0909 0.09493,-0.15772 v -3.74271 l 3.095323,-0.79378 v 5.91836 l -4.272937,-0.67419 c -0.0081,-0.001 -0.01623,-0.002 -0.02442,-0.002 0.02617,-3.4e-4 0.05191,-0.007 0.07534,-0.0187 z"
+       fill="#464a58"
+       id="path50"
+       style="stroke-width:0.264583" />
+  </g>
+</svg>

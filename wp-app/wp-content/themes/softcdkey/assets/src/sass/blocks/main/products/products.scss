@@ -1,0 +1,29 @@
+section#products {
+    margin: 0 0 50px;
+
+    @include mobile{
+        margin: 0 0 50px;
+    }
+}
+
+.products-grid {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 23%);
+    gap: 0% 2.7%;
+    .product-card {
+        margin-bottom: 30px;
+    }
+    @include netbook {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @include tablet {
+        grid-template-columns: 1fr 1fr;
+        margin-top: 20px;
+    }
+
+    @include mobile {
+        grid-template-columns: 1fr 1fr;
+    }
+}

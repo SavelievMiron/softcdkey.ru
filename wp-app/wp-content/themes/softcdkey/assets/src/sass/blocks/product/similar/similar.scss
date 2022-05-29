@@ -1,0 +1,65 @@
+section#similar-products {
+    padding: 40px 0 40px 0;
+
+    @include mobile{
+        padding: 40px 0 0;
+    }
+
+    .similar-reviews{
+        margin-bottom: 40px;
+    }
+}
+
+.similar-products {
+    width: 100%;
+    margin-bottom: 40px;
+
+    @include mobile {
+        border-top: 1px solid #eee;
+        padding-top: 40px;
+    }
+
+    &__heading {
+        color: grey;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 60px;
+
+        @include mobile {
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 18px;
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .product-card {
+        width: 22%;
+        margin-bottom: 30px;
+
+        @include laptop {
+            width: 32%;
+        }
+
+        @include netbook {
+            width: 48%;
+        }
+
+        @include mobile {
+            width: 48%;
+
+            &:nth-child(3), &:nth-child(4){
+                display: none;
+            }
+        }
+    }
+
+}
+
+
