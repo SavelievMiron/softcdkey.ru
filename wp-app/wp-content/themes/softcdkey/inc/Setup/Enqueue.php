@@ -27,6 +27,7 @@ class Enqueue
 	{
 		// CSS
 		wp_enqueue_style( 'main', mix('css/style.css'), array(), filemtime(get_template_directory() . '/assets/dist//css/style.css'), 'all' );
+		wp_enqueue_style( 'changes', mix('css/changes.css'), array(), filemtime(get_template_directory() . '/assets/dist/css/changes.css'), 'all' );
 
 		// JS
 		wp_enqueue_script( 'main', mix('js/app.js'), array(), filemtime(get_template_directory() . '/assets/dist/js/app.js'), true );
