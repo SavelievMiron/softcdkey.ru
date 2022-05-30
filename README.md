@@ -48,7 +48,7 @@ This creates two new folders next to your `docker-compose.yml` file.
 
 The containers are now built and running. You should be able to access the WordPress installation with the configured IP in the browser address. By default it is `http://127.0.0.1`.
 
-For convenience you may add a new entry into your hosts file.
+For convenience, you may add a new entry into your hosts file.
 
 ## Usage
 
@@ -157,3 +157,16 @@ wp plugin list
 You can also visit `http://127.0.0.1:8080` to access phpMyAdmin after starting the containers.
 
 The default username is `root`, and the password is the same as supplied in the `.env` file.
+
+### Assets compilation for the theme 'softcdkey'
+```
+cd wp-app/wp-content/themes/softcdkey
+npm install
+npm run dev
+```
+When you've done with editing the source assets, run ```npm run dev``` inside the theme folder to compile them into ```assets/dist``` folder
+
+### Credentials
+Admin Panel \
+log: admin \
+pass: GzresJSX72JqBZhzrT
