@@ -33,6 +33,20 @@ cp env.example .env
 
 Edit the `.env` file to change the default IP address, MySQL root password and WordPress database name.
 
+Add ```local.softcdkey.ru``` address to hosts file:
+
+#### Linux
+```sudo echo "127.0.0.1  local.softcdkey.ru" >> /etc/hosts```
+
+#### MacOS
+```
+sudo echo "127.0.0.1  local.softcdkey.ru" >> /etc/hosts
+dscacheutil -flushcache
+```
+
+#### Windows
+Go to ```c:\Windows\System32\drivers\etc\hosts``` and add new entry ```127.0.0.1  local.softcdkey.ru```
+
 ## Installation
 
 Open a terminal and `cd` to the folder in which `docker-compose.yml` is saved and run:
