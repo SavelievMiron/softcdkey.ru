@@ -67,7 +67,6 @@ yarn.lock
 ##########
 /README.html
 /build/
-mix-manifest.json
 
 # PhpStrom Project Files #
 .idea/
