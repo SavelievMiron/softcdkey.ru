@@ -311,7 +311,7 @@ $media_files = get_post_meta( get_the_ID(), 'media_files', true );
 										?>
 										<li class="list-item" data-id="region">
 											<span class="list-item__title">
-												Региональная привязка
+												Регион
 											</span>
 													<span class="list-item__content">
 												<?= $info['region']; ?>

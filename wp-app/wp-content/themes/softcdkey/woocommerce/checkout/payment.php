@@ -44,6 +44,10 @@ if ( ! wp_doing_ajax() ) {
 			<br/><button type="submit" class="button alt" name="woocommerce_checkout_update_totals" value="<?php esc_attr_e( 'Update totals', 'woocommerce' ); ?>"><?php esc_html_e( 'Update totals', 'woocommerce' ); ?></button>
 		</noscript>
 
+		<div class="d-flex justify-content-center">
+			<img class="u-kassa" src="<?= get_template_directory_uri(); ?>/assets/img/u-kassa.png" alt="">
+		</div>
+
 		<?php wc_get_template( 'checkout/terms.php' ); ?>
 
 		<?php wp_nonce_field( 'woocommerce-process_checkout', 'woocommerce-process-checkout-nonce' ); ?>

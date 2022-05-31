@@ -13,14 +13,12 @@ $badges  = ProductHelpers::getBadges();
 	<div class="product-card__top">
 		<div class="product-card__content">
 			<a href="<?= $product->get_permalink(); ?>" title="<?= $title; ?>">
-				<img src="<?= wp_get_attachment_image_url( $product->get_image_id(), 'full' ); ?>" alt="product thumbnail">
+				<img src="<?= wp_get_attachment_image_url($product->get_image_id(), 'full'); ?>" alt="product thumbnail">
+				<span class="product-card__title" title="<?= $title; ?>">
+						<span><?= $title; ?></span>
+						<span class="product-card__subtitle">Proffesional</span>
+				</span>
 			</a>
-			<h4 class="product-card__title" title="<?= $title; ?>">
-				<a href="<?= $product->get_permalink(); ?>" title="<?= $title; ?>">
-					<span><?= $title; ?></span>
-					<span class="product-card__subtitle">Proffesional</span>
-				</a>
-			</h4>
 		</div>
 		<?php
 		if ( ! empty( $badge ) ):

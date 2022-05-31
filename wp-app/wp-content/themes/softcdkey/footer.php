@@ -165,6 +165,18 @@ get_template_part( 'template-parts/modal', 'search' );
 						</div>
 					</a>
 
+					<a href="#" class="rating-box rating-box__otzovik rating-box__yandex">
+						<div class="rating-box__wrapper">
+							<div class="rating-box__icon">
+								<img src="<?= get_template_directory_uri(); ?>/assets/img/logo_otzovik.svg"
+									 alt="Otzovik logo">
+							</div>
+						</div>
+						<div class="rating-box__score">
+							100
+						</div>
+					</a>
+
 					<!-- Отзовник widget -->
 
 					<a class="btn-all-reviews" href="<?= home_url( '/testimonials/' ); ?>" title="#">Все отзывы и рейтинги</a>
