@@ -12,7 +12,9 @@ $badges  = ProductHelpers::getBadges();
 <div class="product-card">
 	<div class="product-card__top">
 		<div class="product-card__content">
-			<img src="<?= wp_get_attachment_image_url( $product->get_image_id(), 'full' ); ?>" alt="product thumbnail">
+			<a href="<?= $product->get_permalink(); ?>" title="<?= $title; ?>">
+				<img src="<?= wp_get_attachment_image_url( $product->get_image_id(), 'full' ); ?>" alt="product thumbnail">
+			</a>
 			<h4 class="product-card__title" title="<?= $title; ?>">
 				<a href="<?= $product->get_permalink(); ?>" title="<?= $title; ?>">
 					<span><?= $title; ?></span>
