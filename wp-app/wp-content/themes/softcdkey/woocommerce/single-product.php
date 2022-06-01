@@ -128,13 +128,17 @@ $media_files = get_post_meta( get_the_ID(), 'media_files', true );
 							<div class="product__slider--1 swiper">
 								<div class="swiper-wrapper">
 									<div class="swiper-slide">
-										<img src="<?= wp_get_attachment_image_url( $product->get_image_id(), 'full' ); ?>" alt="product thumb"/>
+										<div class="product__slider--1_slide">
+											<img src="<?= wp_get_attachment_image_url( $product->get_image_id(), 'full' ); ?>" alt="product thumb"/>
+										</div>
 									</div>
 									<?php
 									foreach ( $productGallery as $slideId ):
 										?>
 										<div class="swiper-slide">
-											<img src="<?= wp_get_attachment_image_url( $slideId, 'full' ); ?>" alt="product thumb"/>
+											<div class="product__slider--1_slide">
+												<img src="<?= wp_get_attachment_image_url( $slideId, 'full' ); ?>" alt="product thumb"/>
+											</div>
 										</div>
 									<?php
 									endforeach;
