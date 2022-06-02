@@ -141,13 +141,19 @@
 		}
 
 		&__slider {
-			max-width: 860px;
+			max-width: 100%;
 			margin-top: 40px;
 			padding: 0;
 
 			.swiper-slide {
 				overflow: hidden;
 				border-radius: 10px;
+				position: relative;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+
 
 				img {
 					height: 100%;
@@ -161,10 +167,27 @@
 				margin-bottom: 15px;
 
 				.swiper-slide {
-					height: 350px;
+					height: 500px;
 
+					img{
+						background: rgba(70, 74, 88, 0.31);
+					}
+
+					/* &::after {
+						content: "";
+						position: absolute;
+						z-index: 2;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						background: rgba(70, 74, 88, 0.31);
+						
+						backdrop-filter: blur(5px);
+					}
+ */
 					@include mobile {
-						height: 260px;
+						height: 360px;
 					}
 				}
 			}
@@ -174,7 +197,9 @@
 
 				.swiper-slide {
 					img {
-						width: 80%;
+						width: 100%;
+						min-height: 190px;
+						max-height: 190px;
 					}
 				}
 			}

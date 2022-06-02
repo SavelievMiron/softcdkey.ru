@@ -352,8 +352,8 @@ section#product-info {
 				}
 
 				.swiper-button-prev {
-					top: -20px;
-					left: 35%;
+					top: -25px;
+					left: 40%;
 					transform: rotate(90deg) translateX(35%);
 
 					@include netbook {
@@ -365,8 +365,8 @@ section#product-info {
 
 				.swiper-button-next {
 					top: auto;
-					bottom: -20px;
-					left: 35%;
+					bottom: -25px;
+					left: 40%;
 					transform: rotate(90deg) translateX(35%);
 
 					@include netbook {
@@ -391,7 +391,7 @@ section#product-info {
 					height: 100%;
 					border-radius: 10px;
 					width: 100%;
-					object-fit: contain;
+					object-fit: cover;
 					object-position: center;
 				}
 			}
