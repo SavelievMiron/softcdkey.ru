@@ -1,45 +1,25 @@
 import $ from 'jquery';
 import Swiper, { Navigation, Pagination, Thumbs, Autoplay } from 'swiper';
+import { Fancybox } from '@fancyapps/ui';
 
 const productSlider = document.querySelector('.product__slider');
 if (productSlider !== null) {
-	Swiper.use([Navigation, Thumbs]);
+	/* 	Swiper.use([Navigation, Thumbs]); */
 
-	const productSlider2 = new Swiper(
-		'.product__slider--2__wrapper .product__slider--2',
-		{
-			direction: 'vertical',
-			spaceBetween: 20,
-			slidesPerView: 3,
-			slideToClickedSlide: true,
-			autoplay: {
-				delay: 10000,
-			},
-			navigation: {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev',
-			},
-			pagination: {
-				el: '.product__slider--2__wrapper .swiper-pagination',
-				clickable: true,
-			},
-
-			breakpoints: {
-				0: {
-					direction: 'horizontal',
-				},
-				992: {
-					direction: 'vertical',
-				},
-			},
-		}
-	);
-	const productSlider1 = new Swiper('.product__slider--1', {
+	new Swiper('.product__slider--main', {
 		direction: 'vertical',
-		slidesPerView: 1,
+		slidesPerView: 3,
 		spaceBetween: 20,
-		thumbs: {
-			swiper: productSlider2,
+		autoplay: {
+			delay: 10000,
+		},
+		navigation: {
+			nextEl: '.product__slider .swiper-button-next',
+			prevEl: '.product__slider .swiper-button-prev',
+		},
+		pagination: {
+			el: '.product__slider .swiper-pagination',
+			clickable: true,
 		},
 		breakpoints: {
 			0: {
@@ -202,7 +182,7 @@ if (productDescription !== null) {
 
 	Swiper.use([Navigation, Thumbs]);
 
-	var descSlider2 = new Swiper('.description__slider--2', {
+	let descSlider2 = new Swiper('.description__slider--2', {
 		spaceBetween: 30,
 		slidesPerView: 4,
 		freeMode: true,
@@ -222,7 +202,7 @@ if (productDescription !== null) {
 			el: '.description__slider .swiper-pagination',
 		},
 	});
-	var descSlider1 = new Swiper('.description__slider--1', {
+	let descSlider1 = new Swiper('.description__slider--1', {
 		spaceBetween: 10,
 		thumbs: {
 			swiper: descSlider2,
