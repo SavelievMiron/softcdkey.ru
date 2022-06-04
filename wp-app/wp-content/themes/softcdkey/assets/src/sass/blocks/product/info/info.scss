@@ -312,6 +312,8 @@ section#product-info {
 
 				a {
 					height: 100%;
+					border-radius: 8px;
+					overflow: hidden;
 
 					&:focus {
 						outline: none;
@@ -480,6 +482,8 @@ section#product-info {
 			}
 		}
 	}
+
+
 
 	&__info {
 		height: 100%;

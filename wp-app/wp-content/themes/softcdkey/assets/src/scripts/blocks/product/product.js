@@ -179,36 +179,34 @@ if (productDescription !== null) {
 		);
 		$('.mobile-tab').addClass('is-active');
 	}
-
-	Swiper.use([Navigation, Thumbs]);
-
-	let descSlider2 = new Swiper('.description__slider--2', {
-		spaceBetween: 30,
-		slidesPerView: 4,
-		freeMode: true,
-		watchSlidesProgress: true,
-		breakpoints: {
-			992: {
-				slidesPerView: 4,
-			},
-			768: {
-				slidesPerView: 3,
-			},
-			0: {
-				slidesPerView: 2,
-			},
-		},
-		pagination: {
-			el: '.description__slider .swiper-pagination',
-		},
-	});
-	let descSlider1 = new Swiper('.description__slider--1', {
-		spaceBetween: 10,
-		thumbs: {
-			swiper: descSlider2,
-		},
-	});
 }
+
+const playButtonContent = document.querySelector('.description__video');
+const playButton = document.querySelector('.description__video_icon');
+function removeScreen() {
+	playButtonContent.classList.add('active');
+}
+playButton.addEventListener('click', removeScreen);
+
+let desc__slider = new Swiper('.description__slider_bottom', {
+	slidesPerView: 4,
+	spaceBetween: 30,
+	pagination: {
+		el: '.description__slider .swiper-pagination',
+		clickable: true,
+	},
+	breakpoints: {
+		992: {
+			slidesPerView: 4,
+		},
+		768: {
+			slidesPerView: 3,
+		},
+		0: {
+			slidesPerView: 2,
+		},
+	},
+});
 
 $(document).on('click', '.product__bundle--item', function () {
 	const $this = $(this),
