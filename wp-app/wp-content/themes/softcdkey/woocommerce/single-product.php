@@ -468,32 +468,27 @@ $media_files = get_post_meta( get_the_ID(), 'media_files', true );
                             </div>
                             <? if ( ! empty( $media_files ) && count( $media_files ) > 1 ) : ?>
                             <div class="description__slider container">
-                                <div class="swiper description__slider--1">
-                                    <div class="swiper-wrapper">
-                                        <?
-											foreach ( $media_files as $id => $url ) :
-											?>
-                                        <div class="swiper-slide">
-                                            <img src="<?= $url; ?>" />
-                                        </div>
-                                        <?
-											endforeach;
-											?>
-                                    </div>
+                                <div class="description__video">
+                                    <button>
+                                        <img class="description__video_icon" src="<?= get_template_directory_uri(); ?>/assets/img/svg/button-play.svg" alt="">
+                                        <iframe class="description__video_link" src="https://www.youtube.com/embed/QKj0xzFF_xk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </button>
                                 </div>
-                                <div thumbsSlider="" class="swiper description__slider--2">
+
+                                <div class="swiper description__slider_bottom">
                                     <div class="swiper-wrapper">
                                         <?
 											foreach ( $media_files as $id => $url ) :
 											?>
                                         <div class="swiper-slide">
-                                            <img src="<?= $url; ?>" />
+                                            <a data-fancybox href="<?= $url; ?>">
+                                                <img src="<?= $url; ?>" />
+                                            </a>
                                         </div>
                                         <?
 											endforeach;
 											?>
                                     </div>
-
                                 </div>
                                 <div class="swiper-pagination"></div>
                             </div>
