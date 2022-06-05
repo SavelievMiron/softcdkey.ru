@@ -2,7 +2,13 @@
 
 /** Archive Product Page */
 
-$limit = 12;
+// get setting for catalog page
+$catalog_settings = cmb2_get_option( 'softcdkey_settings', 'catalog_settings' )[0];
+
+$products_limit = $catalog_settings['products'] ?? 12;
+
+$featured_products_page_limit = $catalog_settings['featured_products_page'] ?? 4;
+$featured_products_sidebar_limit = $catalog_settings['featured_products_sidebar'] ?? 3;
 
 $search_categories = get_terms( 'product_cat', [
 		'orderby'    => 'name',
@@ -18,12 +24,29 @@ $filter_categories = get_terms( 'product_cat', [
 		'hide_empty' => false
 ] );
 
-$products = wc_get_products( [
-		'status'       => 'publish',
-		'limit'        => $limit,
-		'stock_status' => 'instock',
-		'paginate'     => true
-] );
+// query featured products
+$fea_args = [
+		'status' => 'publish',
+		'limit' => $featured_products_page_limit,
+		'featured' => true,
+		'stock_status' => 'instock'
+];
+if ( ! empty( $_GET['cat'] ) ) {
+	$fea_args['category'] = [ $_GET['cat'] ];
+}
+$featured_products_page = wc_get_products( $fea_args );
+
+// query products
+$pro_args = [
+	'status'       => 'publish',
+	'limit'        => $products_limit - count( $featured_products_page ),
+	'stock_status' => 'instock',
+	'paginate'     => true
+];
+if ( ! empty( $_GET['cat'] ) ) {
+	$pro_args['category'] = [ $_GET['cat'] ];
+}
+$products = wc_get_products( $pro_args );
 
 get_header();
 ?>
@@ -89,13 +112,13 @@ get_header();
 					Популярные товары
 				</h3>
 				<?php
-					$featured_products = wc_get_products( [
+					$featured_products_sidebar = wc_get_products( [
 							'featured' => true,
-							'limit'    => 3
+							'limit'    => $featured_products_sidebar_limit
 					] );
 
-					if ( ! empty( $featured_products ) ):
-						foreach ( $featured_products as $product ):
+					if ( ! empty( $featured_products_sidebar ) ):
+						foreach ( $featured_products_sidebar as $product ):
 							get_template_part( 'woocommerce/popular-product', 'item', [ 'product' => $product ] );
 						endforeach;
 					endif;
@@ -116,6 +139,14 @@ get_header();
 
 			<div id="data-container" class="products-grid">
 				<?php
+					// loop featured products
+					if ( ! empty( $featured_products_page ) ) :
+						foreach ( $featured_products_page as $product ) :
+							get_template_part( 'woocommerce/product', 'card', [ 'product' => $product ] );
+						endforeach;
+					endif;
+
+					// loop simple products
 					if ( $products->total !== 0 ) :
 						foreach ( $products->products as $product ) :
 							get_template_part( 'woocommerce/product', 'card', [ 'product' => $product ] );
@@ -179,13 +210,13 @@ get_header();
 				</button>
 			</div>
 			<?php
-				if ( $products->total > $limit ):
+				if ( $products->max_num_pages >= 2 ):
 					?>
 			<script>
 				let catalogQueryVars = <?= json_encode([
 					'total'         => $products -> total,
 						'page'          => 1,
-							'per_page'      => $limit,
+							'per_page'      => $products_limit,
 								'max_num_pages' => $products -> max_num_pages
 						] ); ?>;
 			</script>
