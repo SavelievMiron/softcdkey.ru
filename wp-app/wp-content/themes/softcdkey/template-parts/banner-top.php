@@ -2,64 +2,53 @@
 
 /** Top Banner */
 
+$topSlider = cmb2_get_option('softcdkey_sliders', 'softcdkey_topslider');
+
+if ( empty( $topSlider ) ) {
+	return;
+}
 ?>
 <div class="top-banner swiper">
     <div class="swiper-wrapper">
-        <div class="swiper-slide">
-            <div class="product-block">
-                <div class="product-block__text">
-                    <h3>-55%</h3>
-                    <span>Лучшая скидка</span>
-                    <p>На покупку от 4х лицензий <br> <span class="red">Office 365</span></p>
-                </div>
-                <div class="product-block__image">
-                    <img src="<?= get_template_directory_uri(); ?>/assets/img/office_pack.png" alt="slide image">
-                </div>
-                <div class="product-block__link">
-                    <img src="<?= get_template_directory_uri(); ?>/assets/img/w7.png" alt="">
-                    <h4>Microsoft Windows 7</h4>
-                    <span>Следующее предложение</span>
-                </div>
-                <img class="product-block__bg" src="<?= get_template_directory_uri(); ?>/assets/img/discount-55.png" alt="">
-            </div>
-        </div>
-        <div class="swiper-slide">
-            <div class="product-block">
-                <div class="product-block__text">
-                    <h3>-55%</h3>
-                    <span>Лучшая скидка</span>
-                    <p>На покупку от 4х лицензий <br> <span class="red">Office 365</span></p>
-                </div>
-                <div class="product-block__image">
-                    <img src="<?= get_template_directory_uri(); ?>/assets/img/office_pack.png" alt="slide image">
-                </div>
-                <div class="product-block__link">
-                    <img src="<?= get_template_directory_uri(); ?>/assets/img/w7.png" alt="">
-                    <h4>Microsoft Windows 7</h4>
-                    <span>Следующее предложение</span>
-                </div>
-                <img class="product-block__bg" src="<?= get_template_directory_uri(); ?>/assets/img/discount-55.png" alt="">
-            </div>
-        </div>
-        <div class="swiper-slide">
-            <div class="product-block">
-                <div class="product-block__text">
-                    <h3>-55%</h3>
-                    <span>Лучшая скидка</span>
-                    <p>На покупку от 4х лицензий <br> <span class="red">Office 365</span></p>
-                </div>
-                <div class="product-block__image">
-                    <img src="<?= get_template_directory_uri(); ?>/assets/img/office_pack.png" alt="slide image">
-                </div>
-                <div class="product-block__link">
-                    <img src="<?= get_template_directory_uri(); ?>/assets/img/w7.png" alt="">
-                    <h4>Microsoft Windows 7</h4>
-                    <span>Следующее предложение</span>
-                </div>
-                <img class="product-block__bg" src="<?= get_template_directory_uri(); ?>/assets/img/discount-55.png" alt="">
-            </div>
-        </div>
-        
+		<?php
+		foreach ( $topSlider as $k => $slide ) :
+			$product = wc_get_product( $slide['product'] );
+			if ( empty( $product ) ) {
+				continue;
+			}
+		?>
+			<div class="swiper-slide">
+				<a class="product-block" href="<?= $product->get_permalink(); ?>">
+					<div class="product-block__text">
+						<?php if ( ! empty( $slide['discount'] ) ) : ?>
+						<h3>-<?= $slide['discount']; ?>%</h3>
+							<?php if ( isset( $slide['best_discount'] ) && $slide['best_discount'] ) : ?>
+							<span>Лучшая скидка</span>
+							<?php endif; ?>
+						<?php endif; ?>
+						<p>
+							<?= $slide['text']; ?>
+						</p>
+					</div>
+					<div class="product-block__image">
+						<img src="<?= $slide['image']; ?>" alt="<?= $product->get_title(); ?> image">
+					</div>
+					<div class="product-block__link">
+						<?php
+						$key = isset( $topSlider[$k + 1] ) ? $k + 1 : 0;
+						?>
+						<img src="<?= $topSlider[$key]['image']; ?>" alt="<?= get_the_title( $topSlider[$key]['product'] ); ?> image">
+						<h4 title="<?= $topSlider[$key]['title']; ?>"><?= $topSlider[$key]['title']; ?></h4>
+						<span>Следующее предложение</span>
+					</div>
+					<?php if ( ! empty( $slide['discount'] ) ) : ?>
+					<img class="product-block__bg" src="<?= get_template_directory_uri(); ?>/assets/img/discount-<?= $slide['discount']; ?>.png" alt="">
+					<?php endif; ?>
+				</a>
+			</div>
+		<?php
+		endforeach;
+		?>
     </div>
     <div class="swiper-navigation">
         <div class="swiper-nav-btn swiper-button-prev"></div>
