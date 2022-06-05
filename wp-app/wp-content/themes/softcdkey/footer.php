@@ -19,6 +19,8 @@ $social_icons = [
 		'telegram'  => 'fab fa-telegram-plane'
 ];
 
+$payment_methods = cmb2_get_option( 'softcdkey_settings', 'softcdkey_payment_methods' );
+
 ?>
 </main>
 <?php
@@ -118,30 +120,17 @@ get_template_part( 'template-parts/modal', 'search' );
 						Способы оплаты
 					</h3>
 					<ul class="payment-methods">
-						<li class="payment-methods__item">
-							<img src="https://via.placeholder.com/45" alt="payment method">
-						</li>
-						<li class="payment-methods__item">
-							<img src="https://via.placeholder.com/45" alt="payment method">
-						</li>
-						<li class="payment-methods__item">
-							<img src="https://via.placeholder.com/45" alt="payment method">
-						</li>
-						<li class="payment-methods__item">
-							<img src="https://via.placeholder.com/45" alt="payment method">
-						</li>
-						<li class="payment-methods__item">
-							<img src="https://via.placeholder.com/45" alt="payment method">
-						</li>
-						<li class="payment-methods__item">
-							<img src="https://via.placeholder.com/45" alt="payment method">
-						</li>
-						<li class="payment-methods__item">
-							<img src="https://via.placeholder.com/45" alt="payment method">
-						</li>
-						<li class="payment-methods__item">
-							<img src="https://via.placeholder.com/45" alt="payment method">
-						</li>
+						<?php
+						if ( ! empty( $payment_methods ) ) :
+							foreach ( $payment_methods as $method ) :
+						?>
+							<li class="payment-methods__item">
+								<img src="<?= $method['logo']; ?>" alt="<?= $method['name']; ?> logo">
+							</li>
+						<?php
+							endforeach;
+						endif;
+						?>
 					</ul>
 					<a class="d-block underline mt-auto" href="#" title="#">Нет нужной платёжной системы?</a>
 				</div>
