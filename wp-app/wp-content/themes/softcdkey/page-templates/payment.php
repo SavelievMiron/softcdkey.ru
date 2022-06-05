@@ -2,6 +2,8 @@
 
 /** Template Name: Payment and Delivery */
 
+$payment_methods = cmb2_get_option( 'softcdkey_settings', 'softcdkey_payment_methods' );
+
 get_header();
 
 ?>
@@ -29,42 +31,17 @@ get_header();
                         Способы оплаты
                     </h2>
                     <ul>
-                        <li>
-                            <img src="https://via.placeholder.com/90x60" alt="payment method">
-                        </li>
-                        <li>
-                            <img src="https://via.placeholder.com/90x60" alt="payment method">
-                        </li>
-                        <li>
-                            <img src="https://via.placeholder.com/90x60" alt="payment method">
-                        </li>
-                        <li>
-                            <img src="https://via.placeholder.com/90x60" alt="payment method">
-                        </li>
-                        <li>
-                            <img src="https://via.placeholder.com/90x60" alt="payment method">
-                        </li>
-                        <li>
-                            <img src="https://via.placeholder.com/90x60" alt="payment method">
-                        </li>
-                        <li>
-                            <img src="https://via.placeholder.com/90x60" alt="payment method">
-                        </li>
-                        <li>
-                            <img src="https://via.placeholder.com/90x60" alt="payment method">
-                        </li>
-                        <li>
-                            <img src="https://via.placeholder.com/90x60" alt="payment method">
-                        </li>
-                        <li>
-                            <img src="https://via.placeholder.com/90x60" alt="payment method">
-                        </li>
-                        <li>
-                            <img src="https://via.placeholder.com/90x60" alt="payment method">
-                        </li>
-                        <li>
-                            <img src="https://via.placeholder.com/90x60" alt="payment method">
-                        </li>
+						<?php
+						if ( ! empty( $payment_methods ) ) :
+							foreach ( $payment_methods as $method ) :
+						?>
+							<li>
+								<img src="<?= $method['logo'] ?>" alt="<?= $method['title'] ?> logo">
+							</li>
+						<?php
+							endforeach;
+						endif;
+						?>
                     </ul>
                 </div>
                 <div class="payment__steps">
