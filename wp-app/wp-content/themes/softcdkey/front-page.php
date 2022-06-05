@@ -1,5 +1,10 @@
 <?php
 
+$homepage_settings = cmb2_get_option( 'softcdkey_settings', 'homepage_settings' )[0];
+
+$products_limit = $homepage_settings['products'] ?? 12;
+$featured_products_limit = $homepage_settings['featured_products'] ?? 4;
+
 get_header();
 ?>
 	<div class="page-main d-flex flex-column">
@@ -15,8 +20,21 @@ get_header();
 		<div class="order-2">
 			<section id="categories">
 				<div class="container">
+					<?php
+					$catalog_url = get_permalink( wc_get_page_id( 'shop' ) );
+
+					$categories = get_terms( [
+						'taxonomy' => 'product_cat',
+						'fields' => 'slugs',
+						'hide_empty' => false,
+						'parent' => 0
+					] );
+					?>
 					<div class="categories">
-						<a class="categories__tab categories__tab-1" href="#" title="Windows">
+						<?php
+						if ( in_array( 'windows', $categories ) ) :
+						?>
+						<a class="categories__tab categories__tab-1" href="<?= add_query_arg( 'cat', 'windows', $catalog_url ); ?>" title="Windows">
 							<img class="categories__tab-image"
 								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/microsoft.svg"
 								 alt="windows icon">
@@ -27,7 +45,12 @@ get_header();
 								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/microsoft-color.svg"
 								 alt="image hover">
 						</a>
-						<a class="categories__tab categories__tab-2" href="#" title="Office">
+						<?php
+						endif;
+
+						if ( in_array( 'office', $categories ) ) :
+						?>
+						<a class="categories__tab categories__tab-2" href="<?= add_query_arg( 'cat', 'office', $catalog_url ); ?>" title="Office">
 							<img class="categories__tab-image"
 								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/office.svg" alt="office icon">
 							<h4 class="categories__title">
@@ -37,7 +60,12 @@ get_header();
 								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/office-color.svg"
 								 alt="image hover">
 						</a>
-						<a class="categories__tab categories__tab-3" href="#" title="Windows+Office">
+						<?php
+						endif;
+
+						if ( in_array( 'office', $categories ) ) :
+						?>
+						<a class="categories__tab categories__tab-3" href="<?= add_query_arg( 'cat', 'office', $catalog_url ); ?>" title="Windows+Office">
 							<img class="categories__tab-image"
 								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/microsoft.svg"
 								 alt="windows icon">
@@ -70,7 +98,12 @@ get_header();
 									 alt="image hover">
 							</div>
 						</a>
-						<a class="categories__tab categories__tab-4" href="#" title="Antiviruses">
+						<?php
+						endif;
+
+						if ( in_array( 'antivirus', $categories ) ) :
+							?>
+						<a class="categories__tab categories__tab-4" href="<?= add_query_arg( 'cat', 'antivirus', $catalog_url ); ?>" title="Antiviruses">
 							<img class="categories__tab-image"
 								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/antivirus.svg"
 								 alt="antiviruses icon">
@@ -81,6 +114,9 @@ get_header();
 								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/shield-color.svg"
 								 alt="image hover">
 						</a>
+						<?php
+						endif;
+						?>
 					</div>
 				</div>
 			</section>
@@ -99,7 +135,7 @@ get_header();
 						<?php
 						$featured_products = wc_get_products( [
 							'status' => 'publish',
-							'limit' => 8,
+							'limit' => $featured_products_limit,
 							'featured' => true,
 							'stock_status' => 'instock'
 						] );
@@ -112,7 +148,7 @@ get_header();
 
 						$products = wc_get_products( [
 								'status'       => 'publish',
-								'limit'        => 20 - count( $featured_products ),
+								'limit'        => $products_limit - count( $featured_products ),
 								'stock_status' => 'instock'
 						] );
 
