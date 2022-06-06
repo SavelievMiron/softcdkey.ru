@@ -15,7 +15,9 @@ do_action( 'woocommerce_before_main_content' );
 $product = wc_get_product( get_the_ID() );
 $stock   = $product->is_in_stock() ? 'in' : 'out';
 $info    = get_post_meta( get_the_ID(), 'product_characteristics', true )[0];
+
 $media_files = get_post_meta( get_the_ID(), 'media_files', true );
+$video = get_post_meta( get_the_ID(), 'video', true );
 
 ?>
 <div class="single-product">
@@ -27,11 +29,11 @@ $media_files = get_post_meta( get_the_ID(), 'media_files', true );
                         <h1 title="<?= $product->get_title(); ?>">
                             <?= $product->get_title(); ?>
                         </h1>
-                        <? if ( ! empty( $info['version'] ) ) : ?>
+						<?php if ( ! empty( $info['version'] ) ) : ?>
                         <p>
                             <?= $info['version'] ?>
                         </p>
-                        <? endif; ?>
+						<?php endif; ?>
                     </div>
                     <div class="product__metrics">
                         <div class="product__metrics--purchases">
@@ -466,18 +468,20 @@ $media_files = get_post_meta( get_the_ID(), 'media_files', true );
 									endif;
 									?>
                             </div>
-                            <? if ( ! empty( $media_files ) && count( $media_files ) > 1 ) : ?>
+							<?php if ( ! empty( $media_files ) && count( $media_files ) > 1 ) : ?>
                             <div class="description__slider container">
-                                <div class="description__video">
-                                    <button>
-                                        <img class="description__video_icon" src="<?= get_template_directory_uri(); ?>/assets/img/svg/button-play.svg" alt="">
-                                        <iframe class="description__video_link" src="https://www.youtube.com/embed/QKj0xzFF_xk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    </button>
-                                </div>
+								<?php if ( ! empty( $video ) ) : ?>
+									<div class="description__video">
+										<button>
+											<img class="description__video_icon" src="<?= get_template_directory_uri(); ?>/assets/img/svg/button-play.svg" alt="">
+											<iframe class="description__video_link" src="<?= $video; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+										</button>
+									</div>
+								<?php endif; ?>
 
                                 <div class="swiper description__slider_bottom">
                                     <div class="swiper-wrapper">
-                                        <?
+										<?php
 											foreach ( $media_files as $id => $url ) :
 											?>
                                         <div class="swiper-slide">
@@ -485,14 +489,14 @@ $media_files = get_post_meta( get_the_ID(), 'media_files', true );
                                                 <img src="<?= $url; ?>" />
                                             </a>
                                         </div>
-                                        <?
+											<?php
 											endforeach;
 											?>
                                     </div>
                                 </div>
                                 <div class="swiper-pagination"></div>
                             </div>
-                            <? endif; ?>
+							<?php endif; ?>
                         </div>
                     </div>
                     <div id="characteristics" class="product-desc__tab-content mobile-tab">
