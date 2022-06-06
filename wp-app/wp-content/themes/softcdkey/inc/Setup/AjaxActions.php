@@ -170,7 +170,7 @@ class AjaxActions
         }
 
         if (isset($_POST['badges']) && !empty($_POST['badges'])) {
-            $args['badges'] = array_map('sanitize_text_field', $_POST['badges']);
+            $args['tag'] = array_map('sanitize_text_field', $_POST['badges']);
         }
 
         $products = wc_get_products($args);
