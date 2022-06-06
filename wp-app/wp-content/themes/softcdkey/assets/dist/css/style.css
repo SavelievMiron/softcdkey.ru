@@ -20213,13 +20213,10 @@ img, img.img-responsive {
   }
 }
 .page-catalog .products-grid {
-  margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(3, 30%);
-  gap: 1% 5%;
-}
-.page-catalog .products-grid .product-card {
-  margin-bottom: 30px;
+  gap: 30px 5%;
+  margin-top: 30px;
 }
 @media screen and (max-width: 992px) {
   .page-catalog .products-grid {
