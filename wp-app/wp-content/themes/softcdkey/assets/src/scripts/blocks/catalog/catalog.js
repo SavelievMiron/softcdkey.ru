@@ -27,14 +27,19 @@ if (sidebar !== null) {
             el.addEventListener( 'click', function (e) {
 				categories.forEach((item) => {
                     if (item === e.target) return;
+					item.classList.remove( 'checked' )
                     item.classList.remove('open')
                 })
+
                 e.target.classList.toggle('open');
-            });
+				e.target.classList.toggle('checked');
+
+				getProducts()
+			});
         });
     }
 
-    const categoryItems = document.querySelectorAll('.categories__heading, .categories__item');
+	const categoryItems = document.querySelectorAll('.categories__item');
     if (categoryItems.length !== 0) {
         categoryItems.forEach((el) => {
             el.onclick = (e) => {

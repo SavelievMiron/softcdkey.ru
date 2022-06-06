@@ -176,14 +176,17 @@ if (sidebar !== null) {
       el.addEventListener('click', function (e) {
         categories.forEach(function (item) {
           if (item === e.target) return;
+          item.classList.remove('checked');
           item.classList.remove('open');
         });
         e.target.classList.toggle('open');
+        e.target.classList.toggle('checked');
+        getProducts();
       });
     });
   }
 
-  var categoryItems = document.querySelectorAll('.categories__heading, .categories__item');
+  var categoryItems = document.querySelectorAll('.categories__item');
 
   if (categoryItems.length !== 0) {
     categoryItems.forEach(function (el) {
