@@ -548,7 +548,7 @@ final class Settings {
 					$this->redirect_to_404();
 				}
 
-				if ( ! in_array( $_GET['cat'], [ 'windows', 'office', 'antivirus' ] ) ) {
+				if ( ! in_array( $_GET['cat'], [ 'windows', 'office', 'antivirus', 'komlekty' ] ) ) {
 					$this->redirect_to_404();
 				}
 			}
