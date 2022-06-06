@@ -10,7 +10,7 @@ get_header();
 			<div class="row">
 				<div class="page-content">
 					<h1 class="h1">Регистрация</h1>
-					<?= do_shortcode( '[user_registration_form id="120"]' ); ?>
+					<?= do_shortcode( '[user_registration_form id="125"]' ); ?>
 				</div>
 			</div>
 		</div>
