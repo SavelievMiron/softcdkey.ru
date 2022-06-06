@@ -63,9 +63,9 @@ get_header();
 						<?php
 						endif;
 
-						if ( in_array( 'office', $categories ) ) :
+						if ( in_array( 'komlekty', $categories ) ) :
 						?>
-						<a class="categories__tab categories__tab-3" href="<?= add_query_arg( 'cat', 'office', $catalog_url ); ?>" title="Windows+Office">
+						<a class="categories__tab categories__tab-3" href="<?= add_query_arg( 'cat', 'komlekty', $catalog_url ); ?>" title="Windows+Office">
 							<img class="categories__tab-image"
 								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/microsoft.svg"
 								 alt="windows icon">
