@@ -138,6 +138,13 @@ final class Woocommerce {
 			'preview_size' => array( 300, 300 ),
 		] );
 
+		$metabox->add_field( [
+			'name'         => 'Video',
+			'id'           => 'video',
+			'type'         => 'oembed',
+			'desc'         => 'Enter a YouTube, Twitter, or Instagram URL. Supports services listed at <a href="http://codex.wordpress.org/Embeds">http://codex.wordpress.org/Embeds</a>.<br>Example of YouTube link -- https://www.youtube.com/embed/tbodhmmqa-g'
+		] );
+
 		$faq = new_cmb2_box( array(
 			'id'           => 'softcdkey_product_faq',
 			'title'        => 'F.A.Q',
