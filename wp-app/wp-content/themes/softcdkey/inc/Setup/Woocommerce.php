@@ -13,10 +13,6 @@ final class Woocommerce {
 		add_filter( 'manage_edit-product_sortable_columns', [ $this, 'admin_product_custom_sortable_columns' ], 9999 );
 		add_action( 'manage_product_posts_custom_column', [ $this, 'admin_product_custom_columns_content' ], 10, 2 );
 
-		// Add custom fields to woocommerce product
-		add_action( 'woocommerce_product_options_general_product_data', [ $this, 'product_custom_fields' ] );
-		add_action( 'woocommerce_process_product_meta', [ $this, 'product_custom_fields_save' ] );
-
 		// Set product view counter
 		add_action( 'template_redirect', [ $this, 'product_views_counter' ] );
 
@@ -34,12 +30,6 @@ final class Woocommerce {
 
 		// admin custom style
 		add_action( 'admin_head', [ $this, 'admin_custom_style' ] );
-
-		// add arg to wc_product_query
-		add_filter( 'woocommerce_product_data_store_cpt_get_products_query', [
-			$this,
-			'handle_custom_query_var_badge'
-		], 10, 2 );
 
 		// remove view cart link
 		add_filter( 'wc_add_to_cart_message_html', '__return_null' );
@@ -184,52 +174,6 @@ final class Woocommerce {
 		] );
 	}
 
-	public function product_custom_fields() {
-		echo '<div class="product_custom_field">';
-
-		$product = wc_get_product( get_the_ID() );
-
-		$badge    = get_post_meta( get_the_ID(), '_badge', true );
-		$act_code = Encryption::decrypt( get_post_meta( get_the_ID(), '_activation_code', true ) );
-
-		woocommerce_wp_select( [
-			'id'          => '_badge',
-			'label'       => 'Badge',
-			'description' => 'Choose product badge',
-			'desc_tip'    => true,
-			'value'       => $badge ? $badge : '',
-			// 'style' => 'margin-bottom: 0px;',
-			'options'     => [
-				''        => 'None',
-				'popular' => 'Popular',
-				'new'     => 'New',
-				'hot'     => 'Hot Discount',
-				'sale'    => 'On Sale'
-			]
-		] );
-
-		if ( ! $product->is_type( 'bundle' ) ) {
-			woocommerce_wp_text_input( [
-				'id'    => '_activation_code',
-				'label' => 'Activation Code',
-				'value' => $act_code,
-			] );
-		}
-
-		echo '</div>';
-	}
-
-	public function product_custom_fields_save( ?int $post_id ) {
-		if ( isset( $_POST['_badge'] ) && ! empty( $_POST['_badge'] ) ) {
-			update_post_meta( $post_id, '_badge', sanitize_text_field( $_POST['_badge'] ) );
-		}
-
-		if ( isset( $_POST['_activation_code'] ) && ! empty( $_POST['_activation_code'] ) ) {
-			$code = Encryption::encrypt( $_POST['_activation_code'] );
-			update_post_meta( $post_id, '_badge', $code );
-		}
-	}
-
 	public function product_views_counter() {
 		global $post;
 		if ( is_product() ) {
@@ -301,20 +245,6 @@ final class Woocommerce {
 
 	public function custom_order_button_text() {
 		return __( 'Оплатить', 'softcdkey' );
-	}
-
-	function handle_custom_query_var_badge( $query, $query_vars ) {
-		if ( ! empty( $query_vars['badges'] ) ) {
-			$query['meta_query'][] = [
-				'key'     => '_badge',
-				'value'   => $query_vars['badges'],
-				'compare' => 'IN'
-			];
-
-			error_log( print_r( $query['meta_query'], 1 ) );
-		}
-
-		return $query;
 	}
 
 	// custom style for admin area
