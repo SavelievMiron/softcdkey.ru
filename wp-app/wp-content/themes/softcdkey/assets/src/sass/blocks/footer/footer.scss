@@ -62,6 +62,16 @@
 				}
 			}
 
+			.logo__img {
+				height: 60px;
+
+				@include mobile {
+					height: 40px;
+					position: relative;
+					top: 5px;
+				}
+			}
+
 			@include mobile {
 				padding: 20px 0;
 				display: flex;
@@ -74,7 +84,8 @@
 		.logo img {
 			height: 100%;
 			width: 100%;
-			object-fit: cover;
+			object-fit: contain;
+			object-position: left;
 		}
 
 		.company-info {
