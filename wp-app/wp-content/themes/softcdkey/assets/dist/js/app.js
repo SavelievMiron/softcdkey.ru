@@ -49,7 +49,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_modals_registration_registration__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/modals/registration/registration */ "./assets/src/scripts/components/modals/registration/registration.js");
 /* harmony import */ var _components_modals_registration_registration__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_components_modals_registration_registration__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _components_modals_search_search__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/modals/search/search */ "./assets/src/scripts/components/modals/search/search.js");
-/* harmony import */ var _components_modals_search_search__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_components_modals_search_search__WEBPACK_IMPORTED_MODULE_14__);
 /* harmony import */ var _modules_app_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./modules/app.js */ "./assets/src/scripts/modules/app.js");
 /**
  * Manage global libraries like jQuery or THREE from the webpack.mix.js file
@@ -1131,25 +1130,30 @@ if (registrationModal !== null) {
 /*!***************************************************************!*\
   !*** ./assets/src/scripts/components/modals/search/search.js ***!
   \***************************************************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-var searchModal = document.querySelector(".modal--search");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+var searchModal = document.querySelector('.modal--search');
 
 if (searchModal !== null) {
-  $(searchModal).on('click', '.modal__close', function () {
-    $(searchModal).addClass('hide');
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(searchModal).on('click', '.modal__close', function () {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(searchModal).addClass('hide');
+    console.log('hello');
   });
-  $(searchModal).on('input', 'input[type=search]', function () {
-    $(searchModal).find('form').trigger('submit');
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(searchModal).on('input', 'input[type=search]', function () {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(searchModal).find('form').trigger('submit');
   });
   var timer = false;
-  $('.modal--search form').on('submit', function (e) {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.modal--search form').on('submit', function (e) {
     e.preventDefault();
-    var $this = $(this);
+    var $this = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
     clearTimeout(timer);
     timer = setTimeout(function () {
-      $.ajax({
+      jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
         type: 'POST',
         url: globalJS.ajax_url,
         data: {
@@ -1161,7 +1165,7 @@ if (searchModal !== null) {
         error: function error(response, textStatus, thrownError) {},
         success: function success(response, textStatus, thrownError) {
           if (response.success) {
-            $(searchModal).find('#data-container').html(response.data.items);
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(searchModal).find('#data-container').html(response.data.items);
           }
         }
       });
