@@ -1209,7 +1209,7 @@ if (searchModal !== null) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var custom_select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! custom-select */ "./node_modules/custom-select/build/index.js");
-// import $ from 'jquery';
+//import $ from 'jquery';
 
 (0,custom_select__WEBPACK_IMPORTED_MODULE_0__["default"])('.search-form select#category', {
   containerClass: 'search-category-container',
@@ -1291,10 +1291,10 @@ var App = /*#__PURE__*/function () {
         this.el.addEventListener('click', this.elClick);
       }
 
-      var inputs = document.querySelectorAll("input, select, textarea");
+      var inputs = document.querySelectorAll('input, select, textarea');
       inputs.forEach(function (input) {
-        input.addEventListener("invalid", function (event) {
-          input.classList.add("error");
+        input.addEventListener('invalid', function (event) {
+          input.classList.add('error');
         }, false);
       });
     }
