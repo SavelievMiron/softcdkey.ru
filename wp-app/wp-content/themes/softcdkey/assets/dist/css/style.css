@@ -19201,6 +19201,7 @@ img, img.img-responsive {
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+  height: 450px;
 }
 @media screen and (max-width: 576px) {
   .page-main .main-slider .product__image img {
