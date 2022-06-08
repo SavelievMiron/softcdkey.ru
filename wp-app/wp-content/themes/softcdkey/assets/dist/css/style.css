@@ -19700,6 +19700,7 @@ img, img.img-responsive {
   text-align: center;
   z-index: 2;
   padding: 20px;
+  background-color: #595D6C;
 }
 .page-main .top-banner .product-block__link img {
   width: 100%;
