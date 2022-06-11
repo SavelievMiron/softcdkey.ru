@@ -160,15 +160,19 @@ $video = get_post_meta( get_the_ID(), 'video', true );
                         </div>
                         <div class="product__customers">
                             <div class="product__rating">
-                                <i class="icon icon-star"></i>
-                                <i class="icon icon-star"></i>
-                                <i class="icon icon-star"></i>
-                                <i class="icon icon-star"></i>
-                                <i class="icon icon-star-empty"></i>
+								<?php
+								$rating = $product->get_average_rating();
+								for ( $i = 5; $i > 0; $i -- ):
+									?>
+									<i class="icon <?= ( ( $rating - 1 ) > 0 ) ? 'icon-star' : 'icon-star-empty'; ?>"></i>
+								<?php
+								endfor;
+								?>
                                 <span class="product__rating-users">
-                                    99
+                                     <?= $product->get_review_count(); ?>
                                 </span>
                             </div>
+							<?php if ( is_user_logged_in() ) : ?>
                             <div class="product__reviews">
                                 <div class="product__reviews-good">
                                     <i class="far fa-thumbs-up"></i>
@@ -179,6 +183,7 @@ $video = get_post_meta( get_the_ID(), 'video', true );
                                     10
                                 </div>
                             </div>
+							<?php endif; ?>
                         </div>
                     </div>
                     <div class="product__content">
