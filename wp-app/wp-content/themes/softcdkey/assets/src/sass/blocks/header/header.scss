@@ -5,17 +5,7 @@ header {
 	font-weight: 300;
 	box-shadow: 0 4px 18px rgba(0, 0, 0, 0.21);
 
-	.header {
-		padding-top: 15px;
-		padding-bottom: 15px;
-		position: relative;
-		background-color: #464a58;
-		z-index: 5;
 
-		.row {
-			height: 100%;
-		}
-	}
 
 	.logo {
 		padding: 0;
@@ -41,6 +31,22 @@ header {
 			width: 100%;
 			display: flex;
 			justify-content: center;
+		}
+	}
+
+	.header {
+		padding-top: 15px;
+		padding-bottom: 15px;
+		position: relative;
+		background-color: #464a58;
+		z-index: 5;
+
+		.row {
+			height: 100%;
+		}
+
+		.logo .header__logo {
+			height: 42px;
 		}
 	}
 
@@ -496,6 +502,13 @@ header {
 				}
 			}
 		}
+	}
+
+	.user-auth {
+		width: 90%;
+		text-align: center;
+		margin: 20px auto 0;
+		background-color: white;
 	}
 }
 
