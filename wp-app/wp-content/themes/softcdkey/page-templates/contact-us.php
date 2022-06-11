@@ -10,10 +10,12 @@ $social_icons = [
     'instagram' => 'fab fa-instagram',
     'twitter'   => 'fab fa-twitter',
     'skype'     => 'fab fa-skype',
-    'telegram'  => 'fab fa-telegram-plane'
+    'telegram'  => 'fab fa-telegram-plane',
+	'email'     => 'fa-solid fa-envelope',
+	'phone'     => 'fa-solid fa-circle-phone'
 ];
 
-$contact_links = cmb2_get_option( 'softcdkey_settings', 'softcdkey_socials' )[0];
+$contacts = cmb2_get_option( 'softcdkey_settings', 'softcdkey_contacts' );
 ?>
 
 <div class="page-contact-us">
@@ -29,24 +31,24 @@ $contact_links = cmb2_get_option( 'softcdkey_settings', 'softcdkey_socials' )[0]
             </div>
             <div class="contact-us__links">
                 <h2>Контакты</h2>
-                <? 
-                if ( ! empty( $contact_links ) ) :
-                    foreach ( $contact_links as $key => $url ) :
+				<?php
+                if ( ! empty( $contacts ) ) :
+                    foreach ( $contacts as $item ) :
                 ?>
-                        <a href="<?= $url; ?>" class="contact-link">
+                        <a href="<?= $item['link']; ?>" class="contact-link">
                             <div class="contact-link__icon">
-                                <i class="<?= $social_icons[ $key ]; ?>"></i>
+                                <i class="<?= $social_icons[ $item['icon'] ]; ?>"></i>
                             </div>
                             <div class="contact-link__content">
-                                <span class="contact-link__title"><?= ucfirst( $key ); ?></span>
-                                
-                                <span class="contact-link__link" title="<?= ucfirst( $key ); ?>">
-                                    <?= preg_replace("(^https?://)", "", $url ); ?>
+                                <span class="contact-link__title"><?= $item['name']; ?></span>
+
+                                <span class="contact-link__link" title="<?= $item['name']; ?>">
+                                    <?= preg_replace("(^https?://)", "", $item['link'] ); ?>
                                 </span>
                             </div>
                             <i class="fas fa-link"></i>
                         </a>
-                <?
+					<?php
                     endforeach;
                 endif;
                 ?>
