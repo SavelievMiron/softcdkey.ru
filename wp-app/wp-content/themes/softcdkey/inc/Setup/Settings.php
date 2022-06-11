@@ -11,8 +11,11 @@ final class Settings {
 	public function register() {
 		add_action( 'cmb2_admin_init', [ $this, 'register_main_options_metabox' ] );
 
-		// add new admin pages
+		// add new admin pages with the help of Carbon Fields
 		add_action( 'carbon_fields_register_fields', [ $this, 'faq_page_content' ] );
+
+		// create default pages
+		add_action( 'after_setup_theme', [ $this, 'create_default_pages' ] );
 
 		// redirection rules
 		add_action( 'template_redirect', [ $this, 'redirection_rules' ] );
@@ -141,6 +144,60 @@ final class Settings {
 			)
 		) );
 
+
+		/** Contacts */
+		$main_options->add_field( array(
+			'name' => 'Контакты',
+			'type' => 'title',
+			'id'   => 'softcdkey_contacts_title'
+		) );
+
+		$contacts = $main_options->add_field( array(
+			'id'         => 'softcdkey_contacts',
+			'type'       => 'group',
+			'repeatable' => true,
+			'options'    => [
+				'group_title'       => __( 'Контакт #{#}' ),
+				'add_button'     => __( 'Добавить Контакт' ),
+				'remove_button'  => __( 'Удалить' ),
+				'sortable'       => true,
+				'closed'         => false, // true to have the groups closed by default
+				'remove_confirm' => esc_html__( 'Are you sure you want to remove?', 'cmb2' )
+			]
+		) );
+
+		$main_options->add_group_field( $contacts, array(
+			'name'             => 'Лого',
+			'id'               => 'icon',
+			'type'             => 'select',
+			'show_option_none' => true,
+			'default'          => 'custom',
+			'options'          => array(
+				'vkontakte' => __( 'Vkontakte' ),
+				'facebook'  => __( 'Facebook' ),
+				'instagram' => __( 'Instagram' ),
+				'twitter'   => __( 'Twitter' ),
+				'skype'     => __( 'Skype' ),
+				'telegram'  => __( 'Telegram' ),
+				'email'     => __( 'Email' ),
+				'phone'     => __( 'Phone' )
+			),
+		) );
+
+		$main_options->add_group_field( $contacts, array(
+			'name' => 'Название',
+			'id'   => 'name',
+			'type' => 'text',
+		) );
+
+		$main_options->add_group_field( $contacts, array(
+			'name'      => 'Линк',
+			'id'        => 'link',
+			'type'      => 'text_url',
+			'protocols' => array( 'https' )
+		) );
+
+
 		/** Social Media */
 		$main_options->add_field( array(
 			'name' => 'Social Media',
@@ -190,71 +247,6 @@ final class Settings {
 			) );
 		}
 
-		/** Contacts */
-		$main_options->add_field( array(
-			'name' => 'Contacts',
-			'type' => 'title',
-			'id'   => 'softcdkey_contacts_title'
-		) );
-
-		$contacts = $main_options->add_field( array(
-			'id'         => 'softcdkey_contacts',
-			'type'       => 'group',
-			'repeatable' => false,
-		) );
-
-		$contact_fields_url = [
-			[
-				'name' => 'VKontakte',
-				'id'   => 'vkontakte',
-			],
-			[
-				'name' => 'Facebook',
-				'id'   => 'facebook',
-			],
-			[
-				'name' => 'Instagram',
-				'id'   => 'instagram',
-			],
-			[
-				'name' => 'Twitter',
-				'id'   => 'twitter',
-			]
-		];
-
-		$contact_fields_text = [
-			[
-				'name' => 'Email',
-				'id'   => 'email',
-			],
-			[
-				'name' => 'Skype',
-				'id'   => 'skype',
-			],
-			[
-				'name' => 'Telegram',
-				'id'   => 'telegram'
-			],
-		];
-
-		foreach ( $contact_fields_url as $field ) {
-			$main_options->add_group_field( $contacts, array(
-				'name'      => $field['name'],
-				'id'        => $field['id'],
-				'type'      => 'text_url',
-				'protocols' => array( 'https' )
-			) );
-		}
-
-		foreach ( $contact_fields_text as $field ) {
-			$main_options->add_group_field( $contacts, array(
-				'name'      => $field['name'],
-				'id'        => $field['id'],
-				'type'      => 'text',
-				'protocols' => array( 'https' )
-			) );
-		}
-
 		/** Payment Methods **/
 		$main_options->add_field( array(
 			'name' => 'Payment Methods',
@@ -266,7 +258,7 @@ final class Settings {
 			'id'      => 'softcdkey_payment_methods',
 			'type'    => 'group',
 			'options' => array(
-				'group_title'   => __( 'Способ Оплаты {#}', 'cmb2' ),
+				'group_title'   => __( 'Способ Оплаты #{#}', 'cmb2' ),
 				// since version 1.1.4, {#} gets replaced by row number
 				'add_button'    => __( 'Добавить Способ Оплаты', 'cmb2' ),
 				'remove_button' => __( 'Удалить', 'cmb2' ),
@@ -275,9 +267,9 @@ final class Settings {
 		) );
 
 		$main_options->add_group_field( $payment_methods_id, [
-			'name' => 'Name',
-			'id'   => 'name',
-			'type' => 'text',
+			'name'       => 'Name',
+			'id'         => 'name',
+			'type'       => 'text',
 			'attributes' => array(
 				'data-validation' => 'required',
 			),
@@ -298,7 +290,7 @@ final class Settings {
 				),
 			),
 			'preview_size' => array( 300, 250 ),
-			'attributes' => array(
+			'attributes'   => array(
 				'data-validation' => 'required',
 			),
 		] );
@@ -527,6 +519,35 @@ final class Settings {
 				                   ) )
 			              ) ),
 		         ) );
+	}
+
+	public function create_default_pages() {
+		$pages = [
+			[
+				'post_type'     => 'page',
+				'post_title'    => 'Логин',
+				'post_content'  => '',
+				'post_author'   => 1,
+				'post_name'     => 'login',
+				'post_status'   => 'publish',
+				'page_template' => 'page-templates/login.php'
+			],
+			[
+				'post_type'     => 'page',
+				'post_title'    => 'Регистрация',
+				'post_content'  => '',
+				'post_author'   => 1,
+				'post_name'     => 'register',
+				'post_status'   => 'publish',
+				'page_template' => 'page-templates/register.php'
+			],
+		];
+
+		foreach ( $pages as $page ) {
+			if ( ! get_page_by_title( $page['post_title'] ) ) {
+				wp_insert_post( $page );
+			}
+		}
 	}
 
 	public function redirection_rules() {
