@@ -194,6 +194,18 @@
 				transform: translateY(-50%);
 			}
 
+			&.checked:after {
+				font-family: "Font Awesome 6 Free";
+				font-weight: 900;
+				content: "\f00c";
+				transition: all 0.4s ease;
+
+				position: absolute;
+				top: 50%;
+				right: 15px;
+				transform: translateY(-50%);
+			}
+
 			&.no-categories:before {
 				display: none;
 			}
