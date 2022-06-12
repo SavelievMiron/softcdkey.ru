@@ -17,7 +17,14 @@ $badges = get_the_terms( $product->get_id(), 'product_tag' );
 			</a>
 		</div>
 		<?php
-		if ( ! empty( $badges ) ):
+		if ( $product->is_featured() ) :
+			?>
+			<div class="product-card__badge product-card__badge_popular">
+				<?php _e( 'Популярный', 'softcdkey' ); ?>
+			</div>
+		<?php
+		endif;
+		if ( ! empty( $badges ) && ! $product->is_featured() ):
 			foreach ( $badges as $badge ) :
 				?>
 				<div class="product-card__badge product-card__badge_<?= $badge->slug; ?>">
