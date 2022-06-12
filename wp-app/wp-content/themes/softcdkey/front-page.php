@@ -1,8 +1,11 @@
 <?php
+/**
+ * Template Name: Front Page
+ */
 
 $homepage_settings = cmb2_get_option( 'softcdkey_settings', 'homepage_settings' )[0];
 
-$products_limit = $homepage_settings['products'] ?? 12;
+$products_limit          = $homepage_settings['products'] ?? 12;
 $featured_products_limit = $homepage_settings['featured_products'] ?? 4;
 
 get_header();
@@ -24,67 +27,72 @@ get_header();
 					$catalog_url = get_permalink( wc_get_page_id( 'shop' ) );
 
 					$categories = get_terms( [
-						'taxonomy' => 'product_cat',
-						'fields' => 'slugs',
-						'hide_empty' => false,
-						'parent' => 0
+							'taxonomy'   => 'product_cat',
+							'fields'     => 'slugs',
+							'hide_empty' => false,
+							'parent'     => 0
 					] );
 					?>
 					<div class="categories">
 						<?php
 						if ( in_array( 'windows', $categories ) ) :
-						?>
-						<a class="categories__tab categories__tab-1" href="<?= add_query_arg( 'cat', 'windows', $catalog_url ); ?>" title="Windows">
-							<img class="categories__tab-image"
-								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/microsoft.svg"
-								 alt="windows icon">
-							<h4 class="categories__title">
-								Windows
-							</h4>
-							<img class="categories__tab-image_hover"
-								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/microsoft-color.svg"
-								 alt="image hover">
-						</a>
+							?>
+							<a class="categories__tab categories__tab-1"
+							   href="<?= add_query_arg( 'cat', 'windows', $catalog_url ); ?>" title="Windows">
+								<img class="categories__tab-image"
+									 src="<?= get_template_directory_uri(); ?>/assets/img/svg/microsoft.svg"
+									 alt="windows icon">
+								<h4 class="categories__title">
+									Windows
+								</h4>
+								<img class="categories__tab-image_hover"
+									 src="<?= get_template_directory_uri(); ?>/assets/img/svg/microsoft-color.svg"
+									 alt="image hover">
+							</a>
 						<?php
 						endif;
 
 						if ( in_array( 'office', $categories ) ) :
-						?>
-						<a class="categories__tab categories__tab-2" href="<?= add_query_arg( 'cat', 'office', $catalog_url ); ?>" title="Office">
-							<img class="categories__tab-image"
-								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/office.svg" alt="office icon">
-							<h4 class="categories__title">
-								Office
-							</h4>
-							<img class="categories__tab-image_hover"
-								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/office-color.svg"
-								 alt="image hover">
-						</a>
+							?>
+							<a class="categories__tab categories__tab-2"
+							   href="<?= add_query_arg( 'cat', 'office', $catalog_url ); ?>" title="Office">
+								<img class="categories__tab-image"
+									 src="<?= get_template_directory_uri(); ?>/assets/img/svg/office.svg"
+									 alt="office icon">
+								<h4 class="categories__title">
+									Office
+								</h4>
+								<img class="categories__tab-image_hover"
+									 src="<?= get_template_directory_uri(); ?>/assets/img/svg/office-color.svg"
+									 alt="image hover">
+							</a>
 						<?php
 						endif;
 
 						if ( in_array( 'komlekty', $categories ) ) :
-						?>
-						<a class="categories__tab categories__tab-3" href="<?= add_query_arg( 'cat', 'komlekty', $catalog_url ); ?>" title="Windows+Office">
-							<img class="categories__tab-image"
-								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/microsoft.svg"
-								 alt="windows icon">
-							<span class="categories__tab-3_plus">+</span>
-							<img class="categories__tab-image"
-								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/office.svg" alt="office icon">
-							<h4 class="categories__title">
+							?>
+							<a class="categories__tab categories__tab-3"
+							   href="<?= add_query_arg( 'cat', 'komlekty', $catalog_url ); ?>" title="Windows+Office">
+								<img class="categories__tab-image"
+									 src="<?= get_template_directory_uri(); ?>/assets/img/svg/microsoft.svg"
+									 alt="windows icon">
+								<span class="categories__tab-3_plus">+</span>
+								<img class="categories__tab-image"
+									 src="<?= get_template_directory_uri(); ?>/assets/img/svg/office.svg"
+									 alt="office icon">
+								<h4 class="categories__title">
 							<span>
 								Windows
 								<br>
 								Office
 							</span>
-							</h4>
+								</h4>
 
-							<div class="categories__tab-hover">
-								<img class="categories__tab-image"
-									 src="<?= get_template_directory_uri(); ?>/assets/img/svg/microsoft-color.svg"
-									 alt="windows+office icon">
-								<h4 class="categories__title">
+								<div class="categories__tab-hover">
+									<img class="categories__tab-image"
+										 src="<?= get_template_directory_uri(); ?>/assets/img/svg/microsoft-color.svg"
+										 alt="windows+office icon">
+									<h4 class="categories__title">
 								<span>
 									Windows
 									<br>
@@ -92,28 +100,29 @@ get_header();
 									<br>
 									Office
 								</span>
-								</h4>
-								<img class="categories__tab-image"
-									 src="<?= get_template_directory_uri(); ?>/assets/img/svg/office-color.svg"
-									 alt="image hover">
-							</div>
-						</a>
+									</h4>
+									<img class="categories__tab-image"
+										 src="<?= get_template_directory_uri(); ?>/assets/img/svg/office-color.svg"
+										 alt="image hover">
+								</div>
+							</a>
 						<?php
 						endif;
 
 						if ( in_array( 'antivirus', $categories ) ) :
 							?>
-						<a class="categories__tab categories__tab-4" href="<?= add_query_arg( 'cat', 'antivirus', $catalog_url ); ?>" title="Antiviruses">
-							<img class="categories__tab-image"
-								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/antivirus.svg"
-								 alt="antiviruses icon">
-							<h4 class="categories__title">
-								Антивирусы
-							</h4>
-							<img class="categories__tab-image_hover"
-								 src="<?= get_template_directory_uri(); ?>/assets/img/svg/shield-color.svg"
-								 alt="image hover">
-						</a>
+							<a class="categories__tab categories__tab-4"
+							   href="<?= add_query_arg( 'cat', 'antivirus', $catalog_url ); ?>" title="Antiviruses">
+								<img class="categories__tab-image"
+									 src="<?= get_template_directory_uri(); ?>/assets/img/svg/antivirus.svg"
+									 alt="antiviruses icon">
+								<h4 class="categories__title">
+									Антивирусы
+								</h4>
+								<img class="categories__tab-image_hover"
+									 src="<?= get_template_directory_uri(); ?>/assets/img/svg/shield-color.svg"
+									 alt="image hover">
+							</a>
 						<?php
 						endif;
 						?>
@@ -133,23 +142,41 @@ get_header();
 				<div class="container">
 					<div class="products-grid">
 						<?php
-						$featured_products = wc_get_products( [
-							'status' => 'publish',
-							'limit' => $featured_products_limit,
-							'featured' => true,
-							'stock_status' => 'instock'
-						] );
+						// the admin is able to manually choose featured products instead of automatic output
+						$is_manual = false;
 
-						if ( ! empty( $featured_products ) ) :
-							foreach ( $featured_products as $product ) :
-								get_template_part( 'woocommerce/product', 'card', [ 'product' => $product ] );
+						$featured_products = carbon_get_post_meta( get_the_ID(), 'popular_products' );
+						if ( empty( $featured_products ) ) {
+							$featured_products = wc_get_products( [
+									'status'       => 'publish',
+									'limit'        => $featured_products_limit,
+									'featured'     => true,
+									'stock_status' => 'instock',
+									'orderby'      => [ 'meta_value_num' => 'ASC' ],
+									'meta_key'     => 'total_sales'
+							] );
+						} else {
+							$is_manual = true;
+						}
+
+						if ( $is_manual ) {
+							foreach ( $featured_products as $item ) :
+								get_template_part( 'woocommerce/product', 'card', [ 'product' => wc_get_product( $item['id'] ) ] );
 							endforeach;
-						endif;
+						} else {
+							if ( ! empty( $featured_products ) ) :
+								foreach ( $featured_products as $product ) :
+									get_template_part( 'woocommerce/product', 'card', [ 'product' => $product ] );
+								endforeach;
+							endif;
+						}
 
 						$products = wc_get_products( [
-								'status'       => 'publish',
-								'limit'        => $products_limit - count( $featured_products ),
-								'stock_status' => 'instock'
+								'status'        => 'publish',
+								'limit'         => $products_limit - count( $featured_products ),
+								'stock_status'  => 'instock',
+								'orderby'      => [ 'meta_value_num' => 'ASC' ],
+								'meta_key'     => 'total_sales'
 						] );
 
 						if ( ! empty( $products ) ) :
