@@ -13,10 +13,9 @@ class Setup {
 	}
 
 	public function setup() {
-		/*
-		 * You can activate this if you're planning to build a multilingual theme
-		 */
-		// load_theme_textdomain( 'awps', get_template_directory() . '/languages' );
+
+		// disable Gutenberg
+		add_filter('use_block_editor_for_post', '__return_false', 10);
 
 		/*
 		 * Default Theme Support options better have
