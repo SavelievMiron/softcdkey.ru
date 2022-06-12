@@ -4,15 +4,14 @@ namespace SoftCDKey\Setup;
 
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
-use CMB2_Boxes;
 
 final class Settings {
 
 	public function register() {
 		add_action( 'cmb2_admin_init', [ $this, 'register_main_options_metabox' ] );
 
-		// add new admin pages with the help of Carbon Fields
-		add_action( 'carbon_fields_register_fields', [ $this, 'faq_page_content' ] );
+		// register carbon fields
+		add_action( 'carbon_fields_register_fields', [ $this, 'register_carbon_fields' ] );
 
 		// create default pages
 		add_action( 'after_setup_theme', [ $this, 'create_default_pages' ] );
@@ -157,7 +156,7 @@ final class Settings {
 			'type'       => 'group',
 			'repeatable' => true,
 			'options'    => [
-				'group_title'       => __( 'Контакт #{#}' ),
+				'group_title'    => __( 'Контакт #{#}' ),
 				'add_button'     => __( 'Добавить Контакт' ),
 				'remove_button'  => __( 'Удалить' ),
 				'sortable'       => true,
@@ -495,7 +494,7 @@ final class Settings {
 		) );
 	}
 
-	public function faq_page_content() {
+	public function register_carbon_fields() {
 		Container::make( 'theme_options', 'F.A.Q' )
 		         ->set_icon( 'dashicons-media-document' )
 		         ->add_fields( array(
@@ -519,6 +518,71 @@ final class Settings {
 				                   ) )
 			              ) ),
 		         ) );
+
+		Container::make( 'post_meta', __( 'Настройки главной страницы' ) )
+		         ->where( 'post_type', '=', 'page' )
+		         ->where( 'post_template', '=', 'front-page.php' )
+		         ->add_tab( __( 'Популярные товары' ), array(
+			         Field::make( 'association', 'popular_products', __( 'Popular Products' ) )
+			              ->set_types( array(
+				              array(
+					              'type'      => 'post',
+					              'post_type' => 'product',
+				              ),
+			              ) )
+			              ->set_max( 20 )
+		         ) );
+
+		$shop_id = get_page_by_path( 'shop' )->ID;
+		Container::make( 'post_meta', __( 'Настройки каталога' ) )
+		         ->where( 'post_type', '=', 'page' )
+		         ->where( 'post_id', '=', $shop_id )
+		         ->add_tab( __( 'Популярные товары' ), array(
+			         Field::make( 'association', 'popular_products_sidebar', __( 'Popular Products for Sidebar' ) )
+			              ->set_types( array(
+				              array(
+					              'type'      => 'post',
+					              'post_type' => 'product',
+				              ),
+			              ) )
+			              ->set_max( 20 ),
+			         Field::make( 'association', 'popular_products_page', __( 'Popular Products for Page' ) )
+			              ->set_types( array(
+				              array(
+					              'type'      => 'post',
+					              'post_type' => 'product',
+				              ),
+			              ) )
+			              ->set_max( 20 )
+		         ) );
+
+		// get products which either are featured or have tag 'popular'
+		$filter_name_1 = 'carbon_fields_association_field_options_popular_products_post_product';
+		$filter_name_2 = 'carbon_fields_association_field_options_popular_products_sidebar_post_product';
+		$filter_name_3 = 'carbon_fields_association_field_options_popular_products_page_post_product';
+
+		add_filter( $filter_name_1, [$this, 'crb_modify_association_posts_query_args'] );
+		add_filter( $filter_name_2, [$this, 'crb_modify_association_posts_query_args'] );
+		add_filter( $filter_name_3, [$this, 'crb_modify_association_posts_query_args'] );
+	}
+
+	public function crb_modify_association_posts_query_args( $args ) {
+		$args['tax_query'] = array(
+			'relation' => 'OR',
+			[
+				'taxonomy' => 'product_tag',
+				'field'    => 'slug',
+				'terms'    => 'popular',
+			],
+			[
+				'taxonomy' => 'product_visibility',
+				'field'    => 'name',
+				'terms'    => 'featured',
+				'operator' => 'IN',
+			]
+		);
+
+		return $args;
 	}
 
 	public function create_default_pages() {
