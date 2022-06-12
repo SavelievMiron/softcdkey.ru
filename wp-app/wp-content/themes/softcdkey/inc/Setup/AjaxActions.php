@@ -145,10 +145,10 @@ class AjaxActions {
 		check_ajax_referer( 'softcdkey-get_products' );
 
 		$args = [
-			'paginate' => true,
-			'limit'    => 15,
-			'orderby'  => [ 'meta_value_num' => 'ASC' ],
-			'meta_key' => 'total_sales'
+				'paginate' => true,
+				'limit'    => 15,
+				'orderby'  => [ 'meta_value_num' => 'ASC' ],
+				'meta_key' => 'total_sales'
 		];
 
 		if ( isset( $_POST['page'] ) && intval( $_POST['page'] ) ) {
@@ -160,7 +160,20 @@ class AjaxActions {
 		}
 
 		if ( isset( $_POST['tags'] ) && ! empty( $_POST['tags'] ) ) {
-			$args['category'] = array_map( 'sanitize_text_field', $_POST['tags'] );
+			$tags = $_POST['tags'];
+			if ( count( $_POST['tags'] ) >= 2 ) {
+				$parent_cats = get_terms( [
+						'taxonomy' => 'product_cat',
+						'fields'   => 'slugs',
+						'parent'   => 0
+				] );
+				foreach ( $tags as $k => $tag ) {
+					if ( in_array( $tag, $parent_cats ) ) {
+						unset( $tags[ $k ] );
+					}
+				}
+			}
+			$args['category'] = array_map( 'sanitize_text_field', $tags );
 		}
 
 		if ( isset( $_POST['badges'] ) && ! empty( $_POST['badges'] ) ) {
