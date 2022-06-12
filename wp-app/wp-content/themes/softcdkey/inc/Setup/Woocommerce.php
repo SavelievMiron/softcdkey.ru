@@ -33,6 +33,9 @@ final class Woocommerce {
 
 		// remove view cart link
 		add_filter( 'wc_add_to_cart_message_html', '__return_null' );
+
+		// modify main product query
+		add_filter( 'woocommerce_product_data_store_cpt_get_products_query', [$this, 'handle_custom_query_vars'], 10, 2 );
 	}
 
 	public function add_metaboxes_to_product() {
@@ -248,6 +251,29 @@ final class Woocommerce {
 	public function theme_wc_setup() {
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		add_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
+	}
+
+	public function handle_custom_query_vars( $query, $query_vars ) {
+
+		if ( ! empty( $query_vars['exclude_with_tags'] ) ) {
+			$query['tax_query'][] = [
+				'taxonomy'  => 'product_tag',
+				'field'     => 'slug',
+				'terms'     => array_map( 'sanitize_text_field', $query_vars['exclude_with_tags'] ),
+				'operator'  => 'NOT IN',
+			];
+		}
+
+		if ( ! empty( $query_vars['exclude_with_visibilities'] ) ) {
+			$query['tax_query'][] = [
+				'taxonomy' => 'product_visibility',
+				'field'    => 'name',
+				'terms'    => array_map( 'sanitize_text_field', $query_vars['exclude_with_visibilities'] ),
+				'operator' => 'NOT IN',
+			];
+		}
+
+		return $query;
 	}
 
 	public function custom_order_button_text() {
