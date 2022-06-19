@@ -768,11 +768,14 @@ if (productDescription !== null) {
 var playButtonContent = document.querySelector('.description__video');
 var playButton = document.querySelector('.description__video_icon');
 
-function removeScreen() {
-  playButtonContent.classList.add('active');
+if (playButton !== null && playButtonContent !== null) {
+  var removeScreen = function removeScreen() {
+    playButtonContent.classList.add('active');
+  };
+
+  playButton.addEventListener('click', removeScreen);
 }
 
-playButton.addEventListener('click', removeScreen);
 var desc__slider = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"]('.description__slider_bottom', {
   slidesPerView: 4,
   spaceBetween: 30,

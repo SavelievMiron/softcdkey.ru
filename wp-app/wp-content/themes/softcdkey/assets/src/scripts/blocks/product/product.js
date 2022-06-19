@@ -183,10 +183,12 @@ if (productDescription !== null) {
 
 const playButtonContent = document.querySelector('.description__video');
 const playButton = document.querySelector('.description__video_icon');
-function removeScreen() {
-	playButtonContent.classList.add('active');
+if (playButton !== null && playButtonContent !== null) {
+	function removeScreen() {
+		playButtonContent.classList.add('active');
+	}
+	playButton.addEventListener('click', removeScreen);
 }
-playButton.addEventListener('click', removeScreen);
 
 let desc__slider = new Swiper('.description__slider_bottom', {
 	slidesPerView: 4,
